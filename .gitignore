@@ -1,0 +1,12 @@
+# Ignore our build files
+build/**/*
+
+# Ignore user-specific project files
+*.pbxuser
+*.mode1v3
+
+# Ignore XCode 4 user-specific files
+*xcuserdata
+
+# Ignore user-specific folder files
+.DS_Store

@@ -1,0 +1,348 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		199CB60514FEA3CA00A16A97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60414FEA3CA00A16A97 /* UIKit.framework */; };
+		199CB60714FEA3CA00A16A97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60614FEA3CA00A16A97 /* Foundation.framework */; };
+		199CB60914FEA3CA00A16A97 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60814FEA3CA00A16A97 /* CoreGraphics.framework */; };
+		199CB60F14FEA3CA00A16A97 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 199CB60D14FEA3CA00A16A97 /* InfoPlist.strings */; };
+		199CB61114FEA3CA00A16A97 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB61014FEA3CA00A16A97 /* main.m */; };
+		199CB61514FEA3CA00A16A97 /* MEXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB61414FEA3CA00A16A97 /* MEXAppDelegate.m */; };
+		199CB61814FEA3CA00A16A97 /* MEXCrowdCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB61714FEA3CA00A16A97 /* MEXCrowdCountViewController.m */; };
+		199CB61B14FEA3CA00A16A97 /* MEXCrowdCountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 199CB61914FEA3CA00A16A97 /* MEXCrowdCountViewController.xib */; };
+		199CB62414FEA42100A16A97 /* MEXCalibrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB62214FEA42100A16A97 /* MEXCalibrationViewController.m */; };
+		199CB62814FEA44D00A16A97 /* MEXCalibrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 199CB62614FEA44D00A16A97 /* MEXCalibrationViewController.xib */; };
+		199CB62C14FEA47C00A16A97 /* MEXWavingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB62A14FEA47C00A16A97 /* MEXWavingViewController.m */; };
+		199CB62F14FEA49200A16A97 /* MEXWavingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 199CB62E14FEA49200A16A97 /* MEXWavingViewController.xib */; };
+		199CB63214FEAAC000A16A97 /* MEXDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB63114FEAABF00A16A97 /* MEXDataModel.m */; };
+		199CB63514FF84DE00A16A97 /* MEXCalibrationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB63414FF84DD00A16A97 /* MEXCalibrationModel.m */; };
+		199CB63E14FF8FF700A16A97 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB63D14FF8FF700A16A97 /* CoreLocation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		199CB60014FEA3CA00A16A97 /* MexicanWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MexicanWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		199CB60414FEA3CA00A16A97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		199CB60614FEA3CA00A16A97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		199CB60814FEA3CA00A16A97 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		199CB60C14FEA3CA00A16A97 /* MexicanWave-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MexicanWave-Info.plist"; sourceTree = "<group>"; };
+		199CB60E14FEA3CA00A16A97 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		199CB61014FEA3CA00A16A97 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		199CB61214FEA3CA00A16A97 /* MexicanWave-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MexicanWave-Prefix.pch"; sourceTree = "<group>"; };
+		199CB61314FEA3CA00A16A97 /* MEXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEXAppDelegate.h; sourceTree = "<group>"; };
+		199CB61414FEA3CA00A16A97 /* MEXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEXAppDelegate.m; sourceTree = "<group>"; };
+		199CB61614FEA3CA00A16A97 /* MEXCrowdCountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEXCrowdCountViewController.h; sourceTree = "<group>"; };
+		199CB61714FEA3CA00A16A97 /* MEXCrowdCountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEXCrowdCountViewController.m; sourceTree = "<group>"; };
+		199CB61A14FEA3CA00A16A97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MEXCrowdCountViewController.xib; sourceTree = "<group>"; };
+		199CB62114FEA42100A16A97 /* MEXCalibrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXCalibrationViewController.h; sourceTree = "<group>"; };
+		199CB62214FEA42100A16A97 /* MEXCalibrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXCalibrationViewController.m; sourceTree = "<group>"; };
+		199CB62714FEA44D00A16A97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MEXCalibrationViewController.xib; sourceTree = "<group>"; };
+		199CB62914FEA47B00A16A97 /* MEXWavingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXWavingViewController.h; sourceTree = "<group>"; };
+		199CB62A14FEA47C00A16A97 /* MEXWavingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXWavingViewController.m; sourceTree = "<group>"; };
+		199CB62E14FEA49200A16A97 /* MEXWavingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MEXWavingViewController.xib; sourceTree = "<group>"; };
+		199CB63014FEAABE00A16A97 /* MEXDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXDataModel.h; sourceTree = "<group>"; };
+		199CB63114FEAABF00A16A97 /* MEXDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXDataModel.m; sourceTree = "<group>"; };
+		199CB63314FF84DC00A16A97 /* MEXCalibrationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXCalibrationModel.h; sourceTree = "<group>"; };
+		199CB63414FF84DD00A16A97 /* MEXCalibrationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXCalibrationModel.m; sourceTree = "<group>"; };
+		199CB63D14FF8FF700A16A97 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		199CB5FD14FEA3CA00A16A97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				199CB63E14FF8FF700A16A97 /* CoreLocation.framework in Frameworks */,
+				199CB60514FEA3CA00A16A97 /* UIKit.framework in Frameworks */,
+				199CB60714FEA3CA00A16A97 /* Foundation.framework in Frameworks */,
+				199CB60914FEA3CA00A16A97 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		199CB5F514FEA3CA00A16A97 = {
+			isa = PBXGroup;
+			children = (
+				199CB60A14FEA3CA00A16A97 /* MexicanWave */,
+				199CB60314FEA3CA00A16A97 /* Frameworks */,
+				199CB60114FEA3CA00A16A97 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		199CB60114FEA3CA00A16A97 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				199CB60014FEA3CA00A16A97 /* MexicanWave.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		199CB60314FEA3CA00A16A97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				199CB63D14FF8FF700A16A97 /* CoreLocation.framework */,
+				199CB60414FEA3CA00A16A97 /* UIKit.framework */,
+				199CB60614FEA3CA00A16A97 /* Foundation.framework */,
+				199CB60814FEA3CA00A16A97 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		199CB60A14FEA3CA00A16A97 /* MexicanWave */ = {
+			isa = PBXGroup;
+			children = (
+				199CB61314FEA3CA00A16A97 /* MEXAppDelegate.h */,
+				199CB61414FEA3CA00A16A97 /* MEXAppDelegate.m */,
+				199CB63014FEAABE00A16A97 /* MEXDataModel.h */,
+				199CB63114FEAABF00A16A97 /* MEXDataModel.m */,
+				199CB63814FF851C00A16A97 /* Waving */,
+				199CB63714FF850400A16A97 /* Calibration */,
+				199CB63614FF84E600A16A97 /* CrowdCount */,
+				199CB60B14FEA3CA00A16A97 /* Supporting Files */,
+			);
+			path = MexicanWave;
+			sourceTree = "<group>";
+		};
+		199CB60B14FEA3CA00A16A97 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				199CB60C14FEA3CA00A16A97 /* MexicanWave-Info.plist */,
+				199CB60D14FEA3CA00A16A97 /* InfoPlist.strings */,
+				199CB61014FEA3CA00A16A97 /* main.m */,
+				199CB61214FEA3CA00A16A97 /* MexicanWave-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		199CB63614FF84E600A16A97 /* CrowdCount */ = {
+			isa = PBXGroup;
+			children = (
+				199CB61614FEA3CA00A16A97 /* MEXCrowdCountViewController.h */,
+				199CB61714FEA3CA00A16A97 /* MEXCrowdCountViewController.m */,
+				199CB61914FEA3CA00A16A97 /* MEXCrowdCountViewController.xib */,
+			);
+			name = CrowdCount;
+			sourceTree = "<group>";
+		};
+		199CB63714FF850400A16A97 /* Calibration */ = {
+			isa = PBXGroup;
+			children = (
+				199CB63314FF84DC00A16A97 /* MEXCalibrationModel.h */,
+				199CB63414FF84DD00A16A97 /* MEXCalibrationModel.m */,
+				199CB62114FEA42100A16A97 /* MEXCalibrationViewController.h */,
+				199CB62214FEA42100A16A97 /* MEXCalibrationViewController.m */,
+				199CB62614FEA44D00A16A97 /* MEXCalibrationViewController.xib */,
+			);
+			name = Calibration;
+			sourceTree = "<group>";
+		};
+		199CB63814FF851C00A16A97 /* Waving */ = {
+			isa = PBXGroup;
+			children = (
+				199CB62914FEA47B00A16A97 /* MEXWavingViewController.h */,
+				199CB62A14FEA47C00A16A97 /* MEXWavingViewController.m */,
+				199CB62E14FEA49200A16A97 /* MEXWavingViewController.xib */,
+			);
+			name = Waving;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		199CB5FF14FEA3CA00A16A97 /* MexicanWave */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 199CB61E14FEA3CA00A16A97 /* Build configuration list for PBXNativeTarget "MexicanWave" */;
+			buildPhases = (
+				199CB5FC14FEA3CA00A16A97 /* Sources */,
+				199CB5FD14FEA3CA00A16A97 /* Frameworks */,
+				199CB5FE14FEA3CA00A16A97 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MexicanWave;
+			productName = MexicanWave;
+			productReference = 199CB60014FEA3CA00A16A97 /* MexicanWave.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		199CB5F714FEA3CA00A16A97 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Yell Group Plc";
+			};
+			buildConfigurationList = 199CB5FA14FEA3CA00A16A97 /* Build configuration list for PBXProject "MexicanWave" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 199CB5F514FEA3CA00A16A97;
+			productRefGroup = 199CB60114FEA3CA00A16A97 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				199CB5FF14FEA3CA00A16A97 /* MexicanWave */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		199CB5FE14FEA3CA00A16A97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				199CB60F14FEA3CA00A16A97 /* InfoPlist.strings in Resources */,
+				199CB61B14FEA3CA00A16A97 /* MEXCrowdCountViewController.xib in Resources */,
+				199CB62814FEA44D00A16A97 /* MEXCalibrationViewController.xib in Resources */,
+				199CB62F14FEA49200A16A97 /* MEXWavingViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		199CB5FC14FEA3CA00A16A97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				199CB61114FEA3CA00A16A97 /* main.m in Sources */,
+				199CB61514FEA3CA00A16A97 /* MEXAppDelegate.m in Sources */,
+				199CB61814FEA3CA00A16A97 /* MEXCrowdCountViewController.m in Sources */,
+				199CB62414FEA42100A16A97 /* MEXCalibrationViewController.m in Sources */,
+				199CB62C14FEA47C00A16A97 /* MEXWavingViewController.m in Sources */,
+				199CB63214FEAAC000A16A97 /* MEXDataModel.m in Sources */,
+				199CB63514FF84DE00A16A97 /* MEXCalibrationModel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		199CB60D14FEA3CA00A16A97 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				199CB60E14FEA3CA00A16A97 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		199CB61914FEA3CA00A16A97 /* MEXCrowdCountViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				199CB61A14FEA3CA00A16A97 /* en */,
+			);
+			name = MEXCrowdCountViewController.xib;
+			sourceTree = "<group>";
+		};
+		199CB62614FEA44D00A16A97 /* MEXCalibrationViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				199CB62714FEA44D00A16A97 /* en */,
+			);
+			name = MEXCalibrationViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		199CB61C14FEA3CA00A16A97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		199CB61D14FEA3CA00A16A97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		199CB61F14FEA3CA00A16A97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MexicanWave/MexicanWave-Prefix.pch";
+				INFOPLIST_FILE = "MexicanWave/MexicanWave-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		199CB62014FEA3CA00A16A97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MexicanWave/MexicanWave-Prefix.pch";
+				INFOPLIST_FILE = "MexicanWave/MexicanWave-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		199CB5FA14FEA3CA00A16A97 /* Build configuration list for PBXProject "MexicanWave" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				199CB61C14FEA3CA00A16A97 /* Debug */,
+				199CB61D14FEA3CA00A16A97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		199CB61E14FEA3CA00A16A97 /* Build configuration list for PBXNativeTarget "MexicanWave" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				199CB61F14FEA3CA00A16A97 /* Debug */,
+				199CB62014FEA3CA00A16A97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 199CB5F714FEA3CA00A16A97 /* Project object */;
+}
