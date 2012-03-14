@@ -10,6 +10,26 @@
 		1903F3701510E5EC00807542 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1903F36A1510E5EC00807542 /* InfoPlist.strings */; };
 		1903F3711510E5EC00807542 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1903F36C1510E5EC00807542 /* MainWindow.xib */; };
 		1903F3721510E5EC00807542 /* MEXWavingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1903F36E1510E5EC00807542 /* MEXWavingViewController.xib */; };
+		1903F3A81510E6C000807542 /* icon-group@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F39E1510E6C000807542 /* icon-group@2x.png */; };
+		1903F3A91510E6C000807542 /* icon-stadium@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F39F1510E6C000807542 /* icon-stadium@2x.png */; };
+		1903F3AA1510E6C000807542 /* icon-music@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3A01510E6C000807542 /* icon-music@2x.png */; };
+		1903F3AB1510E6C000807542 /* button-m@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3A11510E6C000807542 /* button-m@2x.png */; };
+		1903F3AC1510E6C000807542 /* button-separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3A21510E6C000807542 /* button-separator@2x.png */; };
+		1903F3AD1510E6C000807542 /* button-l@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3A31510E6C000807542 /* button-l@2x.png */; };
+		1903F3AE1510E6C000807542 /* button-r@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3A41510E6C000807542 /* button-r@2x.png */; };
+		1903F3AF1510E6C000807542 /* light-blob@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3A51510E6C000807542 /* light-blob@2x.png */; };
+		1903F3B01510E6C000807542 /* flare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3A61510E6C000807542 /* flare@2x.png */; };
+		1903F3B11510E6C000807542 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3A71510E6C000807542 /* background@2x.png */; };
+		1903F3C01510EC2800807542 /* light-blob.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3B61510EC2200807542 /* light-blob.png */; };
+		1903F3C11510EC2800807542 /* icon-stadium.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3B71510EC2200807542 /* icon-stadium.png */; };
+		1903F3C21510EC2800807542 /* icon-music.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3B81510EC2300807542 /* icon-music.png */; };
+		1903F3C31510EC2800807542 /* icon-group.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3B91510EC2400807542 /* icon-group.png */; };
+		1903F3C41510EC2800807542 /* flare.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3BA1510EC2400807542 /* flare.png */; };
+		1903F3C51510EC2800807542 /* button-separator.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3BB1510EC2400807542 /* button-separator.png */; };
+		1903F3C61510EC2800807542 /* button-r.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3BC1510EC2500807542 /* button-r.png */; };
+		1903F3C71510EC2800807542 /* button-m.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3BD1510EC2600807542 /* button-m.png */; };
+		1903F3C81510EC2800807542 /* button-l.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3BE1510EC2800807542 /* button-l.png */; };
+		1903F3C91510EC2800807542 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3BF1510EC2800807542 /* background.png */; };
 		199CB60514FEA3CA00A16A97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60414FEA3CA00A16A97 /* UIKit.framework */; };
 		199CB60714FEA3CA00A16A97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60614FEA3CA00A16A97 /* Foundation.framework */; };
 		199CB60914FEA3CA00A16A97 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60814FEA3CA00A16A97 /* CoreGraphics.framework */; };
@@ -26,6 +46,26 @@
 		1903F36B1510E5EC00807542 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		1903F36D1510E5EC00807542 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MainWindow.xib; sourceTree = "<group>"; };
 		1903F36F1510E5EC00807542 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MEXWavingViewController.xib; sourceTree = "<group>"; };
+		1903F39E1510E6C000807542 /* icon-group@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-group@2x.png"; sourceTree = "<group>"; };
+		1903F39F1510E6C000807542 /* icon-stadium@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-stadium@2x.png"; sourceTree = "<group>"; };
+		1903F3A01510E6C000807542 /* icon-music@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-music@2x.png"; sourceTree = "<group>"; };
+		1903F3A11510E6C000807542 /* button-m@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-m@2x.png"; sourceTree = "<group>"; };
+		1903F3A21510E6C000807542 /* button-separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-separator@2x.png"; sourceTree = "<group>"; };
+		1903F3A31510E6C000807542 /* button-l@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-l@2x.png"; sourceTree = "<group>"; };
+		1903F3A41510E6C000807542 /* button-r@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-r@2x.png"; sourceTree = "<group>"; };
+		1903F3A51510E6C000807542 /* light-blob@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-blob@2x.png"; sourceTree = "<group>"; };
+		1903F3A61510E6C000807542 /* flare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flare@2x.png"; sourceTree = "<group>"; };
+		1903F3A71510E6C000807542 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		1903F3B61510EC2200807542 /* light-blob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-blob.png"; sourceTree = "<group>"; };
+		1903F3B71510EC2200807542 /* icon-stadium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-stadium.png"; sourceTree = "<group>"; };
+		1903F3B81510EC2300807542 /* icon-music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-music.png"; sourceTree = "<group>"; };
+		1903F3B91510EC2400807542 /* icon-group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-group.png"; sourceTree = "<group>"; };
+		1903F3BA1510EC2400807542 /* flare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flare.png; sourceTree = "<group>"; };
+		1903F3BB1510EC2400807542 /* button-separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-separator.png"; sourceTree = "<group>"; };
+		1903F3BC1510EC2500807542 /* button-r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-r.png"; sourceTree = "<group>"; };
+		1903F3BD1510EC2600807542 /* button-m.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-m.png"; sourceTree = "<group>"; };
+		1903F3BE1510EC2800807542 /* button-l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-l.png"; sourceTree = "<group>"; };
+		1903F3BF1510EC2800807542 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		199CB60014FEA3CA00A16A97 /* MexicanWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MexicanWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		199CB60414FEA3CA00A16A97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		199CB60614FEA3CA00A16A97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -63,6 +103,7 @@
 		1903F3681510E5CF00807542 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1903F3891510E64A00807542 /* Images */,
 				1903F3691510E5EC00807542 /* en.lproj */,
 			);
 			name = Resources;
@@ -77,6 +118,34 @@
 			);
 			name = en.lproj;
 			path = MexicanWave/en.lproj;
+			sourceTree = "<group>";
+		};
+		1903F3891510E64A00807542 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1903F3B61510EC2200807542 /* light-blob.png */,
+				1903F3B71510EC2200807542 /* icon-stadium.png */,
+				1903F3B81510EC2300807542 /* icon-music.png */,
+				1903F3B91510EC2400807542 /* icon-group.png */,
+				1903F3BA1510EC2400807542 /* flare.png */,
+				1903F3BB1510EC2400807542 /* button-separator.png */,
+				1903F3BC1510EC2500807542 /* button-r.png */,
+				1903F3BD1510EC2600807542 /* button-m.png */,
+				1903F3BE1510EC2800807542 /* button-l.png */,
+				1903F3BF1510EC2800807542 /* background.png */,
+				1903F39E1510E6C000807542 /* icon-group@2x.png */,
+				1903F39F1510E6C000807542 /* icon-stadium@2x.png */,
+				1903F3A01510E6C000807542 /* icon-music@2x.png */,
+				1903F3A11510E6C000807542 /* button-m@2x.png */,
+				1903F3A21510E6C000807542 /* button-separator@2x.png */,
+				1903F3A31510E6C000807542 /* button-l@2x.png */,
+				1903F3A41510E6C000807542 /* button-r@2x.png */,
+				1903F3A51510E6C000807542 /* light-blob@2x.png */,
+				1903F3A61510E6C000807542 /* flare@2x.png */,
+				1903F3A71510E6C000807542 /* background@2x.png */,
+			);
+			name = Images;
+			path = MexicanWave/Images;
 			sourceTree = "<group>";
 		};
 		199CB5F514FEA3CA00A16A97 = {
@@ -206,6 +275,26 @@
 				1903F3701510E5EC00807542 /* InfoPlist.strings in Resources */,
 				1903F3711510E5EC00807542 /* MainWindow.xib in Resources */,
 				1903F3721510E5EC00807542 /* MEXWavingViewController.xib in Resources */,
+				1903F3A81510E6C000807542 /* icon-group@2x.png in Resources */,
+				1903F3A91510E6C000807542 /* icon-stadium@2x.png in Resources */,
+				1903F3AA1510E6C000807542 /* icon-music@2x.png in Resources */,
+				1903F3AB1510E6C000807542 /* button-m@2x.png in Resources */,
+				1903F3AC1510E6C000807542 /* button-separator@2x.png in Resources */,
+				1903F3AD1510E6C000807542 /* button-l@2x.png in Resources */,
+				1903F3AE1510E6C000807542 /* button-r@2x.png in Resources */,
+				1903F3AF1510E6C000807542 /* light-blob@2x.png in Resources */,
+				1903F3B01510E6C000807542 /* flare@2x.png in Resources */,
+				1903F3B11510E6C000807542 /* background@2x.png in Resources */,
+				1903F3C01510EC2800807542 /* light-blob.png in Resources */,
+				1903F3C11510EC2800807542 /* icon-stadium.png in Resources */,
+				1903F3C21510EC2800807542 /* icon-music.png in Resources */,
+				1903F3C31510EC2800807542 /* icon-group.png in Resources */,
+				1903F3C41510EC2800807542 /* flare.png in Resources */,
+				1903F3C51510EC2800807542 /* button-separator.png in Resources */,
+				1903F3C61510EC2800807542 /* button-r.png in Resources */,
+				1903F3C71510EC2800807542 /* button-m.png in Resources */,
+				1903F3C81510EC2800807542 /* button-l.png in Resources */,
+				1903F3C91510EC2800807542 /* background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
