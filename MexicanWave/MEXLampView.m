@@ -23,8 +23,10 @@
     NSAssert(self.subviews.count == 2, @"Bulb view or glow view or both not present in a lamp");
     bulbScale = newScale;
     UIView* bulbView = [self.subviews objectAtIndex:0];
-    const CGFloat affineScale = MIN(1, MAX(newScale, 0));
+    const CGFloat affineScale = MIN(1, MAX(bulbScale, 0));
     bulbView.transform = CGAffineTransformMakeScale(affineScale, affineScale);
+    UIView* glowView = [self.subviews objectAtIndex:1];
+    glowView.transform = CGAffineTransformMakeScale(affineScale, affineScale);
 }
 
 - (void)commonInitialization {

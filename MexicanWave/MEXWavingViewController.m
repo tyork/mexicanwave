@@ -11,6 +11,9 @@
 #import "MEXCalibrationModel.h"
 #import "MEXWaveFxView.h"
 
+
+#define SIGN(x) ((x) < 0.0f ? -1.0f : 1.0f)
+
 @implementation MEXWavingViewController
 
 @synthesize waveView;
@@ -74,17 +77,41 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [self.waveView setAllLampIntensities:1.0f animated:animated];
+
+    double delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.waveView setAllLampIntensities:1.0f animated:animated];
+    });
+}
+
+- (CGPoint)positionOnProjectedCircleForAngle:(float)angle center:(CGPoint)center {
+    const float y = 132.0f*2.0f*(fabsf(angle) - 0.5f);
+    return CGPointMake(center.x + SIGN(angle)*sqrtf(132.0f*132.0f - y*y), center.y - y);
+}
+
+- (CGFloat)scaleFactorOnProjectedCircleForAngle:(float)fractionalAngle {
+    return (76.0f/128.0f) * (1.0f - fabsf(fractionalAngle)*0.86);    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didWave:) name:MEXWaveModelDidWaveNotification object:nil];
-        
-    NSArray* locations = [NSArray arrayWithObjects:[NSValue valueWithCGPoint:CGPointMake(100, 100)],nil];
-    NSArray* scaleFactors = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.0f],nil];
+    
+    
+    NSArray* angles = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.24f],[NSNumber numberWithFloat:0.48f],[NSNumber numberWithFloat:0.68f],[NSNumber numberWithFloat:0.815f],[NSNumber numberWithFloat:0.896f],[NSNumber numberWithFloat:0.945f],[NSNumber numberWithFloat:0.98f],[NSNumber numberWithFloat:0.995f],[NSNumber numberWithFloat:1.0f],[NSNumber numberWithFloat:-0.24f],[NSNumber numberWithFloat:-0.48f],[NSNumber numberWithFloat:-0.68f],[NSNumber numberWithFloat:-0.815f],[NSNumber numberWithFloat:-0.896f],[NSNumber numberWithFloat:-0.945f],[NSNumber numberWithFloat:-0.98f],[NSNumber numberWithFloat:-0.995f],nil];
 
+    
+    
+    NSMutableArray* locations = [[NSMutableArray alloc] initWithCapacity:angles.count]; 
+    NSMutableArray* scaleFactors = [[NSMutableArray alloc] initWithCapacity:angles.count]; 
+
+    for(NSUInteger angleIndex = 0; angleIndex < angles.count; angleIndex++) {
+        const float angle = [[angles objectAtIndex:angleIndex] floatValue];
+        [locations addObject:[NSValue valueWithCGPoint:[self positionOnProjectedCircleForAngle:angle center:CGPointMake(158.0f, 155.0f)]]];
+        [scaleFactors addObject:[NSNumber numberWithFloat:[self scaleFactorOnProjectedCircleForAngle:angle]]];
+    }
+    
     
     [self.waveView configureLampsWithLocations:locations scaleFactors:scaleFactors];    
     [self.waveView setAllLampIntensities:0 animated:NO];

@@ -42,7 +42,6 @@
         [oneNewLamp sizeToFit];
         oneNewLamp.center = [[locations objectAtIndex:lampIndex] CGPointValue];
         oneNewLamp.bulbScale = [[scaleFactors objectAtIndex:lampIndex] floatValue];
-        oneNewLamp.glowFraction = oneNewLamp.bulbScale;
         [self addSubview:oneNewLamp];
         [newLamps addObject:oneNewLamp];
         [oneNewLamp release];
