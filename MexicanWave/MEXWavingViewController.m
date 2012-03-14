@@ -9,9 +9,11 @@
 #import "MEXWavingViewController.h"
 #import "MEXWaveModel.h"
 #import "MEXCalibrationModel.h"
+#import "MEXWaveFxView.h"
 
 @implementation MEXWavingViewController
 
+@synthesize waveView;
 @synthesize waveModel, calibrationModel;
 
 - (MEXWaveModel*)waveModel {
@@ -64,21 +66,36 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
     [waveModel release];
     [calibrationModel release];
+    [waveView release];
     [super dealloc];
 }
 
 #pragma mark - View lifecycle
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.waveView setAllLampIntensities:1.0f animated:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didWave:) name:MEXWaveModelDidWaveNotification object:nil];
         
+    NSArray* locations = [NSArray arrayWithObjects:[NSValue valueWithCGPoint:CGPointMake(100, 100)],nil];
+    NSArray* scaleFactors = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.0f],nil];
+
+    
+    [self.waveView configureLampsWithLocations:locations scaleFactors:scaleFactors];    
+    [self.waveView setAllLampIntensities:0 animated:NO];
+    
     // Set crowd type on view from model
     self.waveModel.crowdType; // TODO:
 }
  
 - (void)viewDidUnload {
     [super viewDidUnload];
+    self.waveView = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
 }
 

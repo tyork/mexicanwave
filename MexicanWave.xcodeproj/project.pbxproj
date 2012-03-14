@@ -30,6 +30,8 @@
 		1903F3C71510EC2800807542 /* button-m.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3BD1510EC2600807542 /* button-m.png */; };
 		1903F3C81510EC2800807542 /* button-l.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3BE1510EC2800807542 /* button-l.png */; };
 		1903F3C91510EC2800807542 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3BF1510EC2800807542 /* background.png */; };
+		1903F3CD1510F23A00807542 /* MEXWaveFxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1903F3CC1510F23A00807542 /* MEXWaveFxView.m */; };
+		1903F3D01510F50C00807542 /* MEXLampView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1903F3CF1510F50B00807542 /* MEXLampView.m */; };
 		199CB60514FEA3CA00A16A97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60414FEA3CA00A16A97 /* UIKit.framework */; };
 		199CB60714FEA3CA00A16A97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60614FEA3CA00A16A97 /* Foundation.framework */; };
 		199CB60914FEA3CA00A16A97 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60814FEA3CA00A16A97 /* CoreGraphics.framework */; };
@@ -66,6 +68,10 @@
 		1903F3BD1510EC2600807542 /* button-m.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-m.png"; sourceTree = "<group>"; };
 		1903F3BE1510EC2800807542 /* button-l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-l.png"; sourceTree = "<group>"; };
 		1903F3BF1510EC2800807542 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		1903F3CB1510F23900807542 /* MEXWaveFxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXWaveFxView.h; sourceTree = "<group>"; };
+		1903F3CC1510F23A00807542 /* MEXWaveFxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXWaveFxView.m; sourceTree = "<group>"; };
+		1903F3CE1510F50A00807542 /* MEXLampView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXLampView.h; sourceTree = "<group>"; };
+		1903F3CF1510F50B00807542 /* MEXLampView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXLampView.m; sourceTree = "<group>"; };
 		199CB60014FEA3CA00A16A97 /* MexicanWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MexicanWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		199CB60414FEA3CA00A16A97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		199CB60614FEA3CA00A16A97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -216,6 +222,10 @@
 			children = (
 				199CB62914FEA47B00A16A97 /* MEXWavingViewController.h */,
 				199CB62A14FEA47C00A16A97 /* MEXWavingViewController.m */,
+				1903F3CB1510F23900807542 /* MEXWaveFxView.h */,
+				1903F3CC1510F23A00807542 /* MEXWaveFxView.m */,
+				1903F3CE1510F50A00807542 /* MEXLampView.h */,
+				1903F3CF1510F50B00807542 /* MEXLampView.m */,
 			);
 			name = Waving;
 			sourceTree = "<group>";
@@ -310,6 +320,8 @@
 				199CB62C14FEA47C00A16A97 /* MEXWavingViewController.m in Sources */,
 				199CB63214FEAAC000A16A97 /* MEXWaveModel.m in Sources */,
 				199CB63514FF84DE00A16A97 /* MEXCalibrationModel.m in Sources */,
+				1903F3CD1510F23A00807542 /* MEXWaveFxView.m in Sources */,
+				1903F3D01510F50C00807542 /* MEXLampView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

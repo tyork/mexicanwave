@@ -28,7 +28,7 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
 }
 
 - (float)angleForWaveAtIndex:(NSUInteger)waveIndex date:(NSDate*)date {    
-    return 2.0f * M_PI * (fmod([date timeIntervalSinceReferenceDate], self.wavePeriodInSeconds)/self.wavePeriodInSeconds + ((float)waveIndex/(float)[self numberOfWaves]));
+    return 360.0f * (fmod([date timeIntervalSinceReferenceDate], self.wavePeriodInSeconds)/self.wavePeriodInSeconds + ((float)waveIndex/(float)[self numberOfWaves]));
 }
 
 - (NSTimeInterval)wavePeriodInSeconds {

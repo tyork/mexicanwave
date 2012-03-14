@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@class  MEXWaveModel, MEXCalibrationModel;
+@class MEXWaveFxView;
+@class MEXWaveModel, MEXCalibrationModel;
 
 @interface MEXWavingViewController : UIViewController
 
 @property (nonatomic,retain) MEXWaveModel* waveModel;
 @property (nonatomic,retain) MEXCalibrationModel* calibrationModel;
+
+@property (nonatomic,retain) IBOutlet MEXWaveFxView* waveView;
 
 - (IBAction)didTapSmallAudienceButton:(id)sender;
 - (IBAction)didTapGigButton:(id)sender;
