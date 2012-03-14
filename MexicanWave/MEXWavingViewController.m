@@ -48,11 +48,10 @@
     }];
 }
 
-
 #pragma mark - Wave trigger
 
 - (void)didWave:(NSNotification*)note {
-    
+    // TODO:
 }
 
 #pragma mark - Lifecycle
@@ -64,6 +63,7 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
     [waveModel release];
+    [calibrationModel release];
     [super dealloc];
 }
 

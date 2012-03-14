@@ -13,6 +13,12 @@
 
 NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotification";
 
+@interface MEXWaveModel ()
+- (void)didWave;
+- (void)cancelWave;
+- (void)scheduleWave;
+@end
+
 @implementation MEXWaveModel
 
 @synthesize crowdType, deviceHeadingInDegreesEastOfNorth;
@@ -33,7 +39,7 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
             break;
             
         case kMEXCrowdTypeStageBased:
-            crowdSizeFactor = 0.5;
+            crowdSizeFactor = 0.3;
             break;
             
         case kMEXCrowdTypeStadium:
@@ -50,6 +56,7 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
 #pragma mark - Waving
 
 - (void)didWave {
+    [self scheduleWave];
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:MEXWaveModelDidWaveNotification object:self]];
 }
 
@@ -82,7 +89,7 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
     if(!(self = [super init])) {
         return nil;
     }
-    crowdType = kMEXCrowdTypeStadium;
+    crowdType = kMEXCrowdTypeStageBased;
     
     NSNotificationCenter* noteCenter = [NSNotificationCenter defaultCenter];
     [noteCenter addObserver:self selector:@selector(scheduleWave) name:UIApplicationSignificantTimeChangeNotification object:nil];
