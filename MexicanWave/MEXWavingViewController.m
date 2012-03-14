@@ -8,20 +8,46 @@
 
 #import "MEXWavingViewController.h"
 #import "MEXWaveModel.h"
+#import "MEXCalibrationModel.h"
 
 @implementation MEXWavingViewController
 
+@synthesize waveModel, calibrationModel;
+
+- (MEXWaveModel*)waveModel {
+    if(!waveModel) {
+        waveModel = [[MEXWaveModel alloc] init];
+    }
+    return waveModel;
+}
+
+- (MEXCalibrationModel*)calibrationModel {
+    if(!calibrationModel) {
+        calibrationModel = [[MEXCalibrationModel alloc] init];
+    }
+    return calibrationModel;
+}
+
+#pragma mark - UI actions
+
 - (IBAction)didTapSmallAudienceButton:(id)sender {
-    
+    self.waveModel.crowdType = kMEXCrowdTypeSmallGroup;
 }
 
 - (IBAction)didTapGigButton:(id)sender {
-    
+    self.waveModel.crowdType = kMEXCrowdTypeStageBased;    
 }
 
 - (IBAction)didTapStadiumButton:(id)sender {
-    
+    self.waveModel.crowdType = kMEXCrowdTypeStadium;
 }
+
+- (IBAction)didTapCalibrationButton:(id)sender {
+    [self.calibrationModel startCalibratingWithErrorPercentage:0 timeout:4.0 completionBlock:^(float deviceHeading, NSError* error) {
+        self.waveModel.deviceHeadingInDegreesEastOfNorth = [self.calibrationModel headingInDegreesEastOfNorth];
+    }];
+}
+
 
 #pragma mark - Wave trigger
 
@@ -36,7 +62,8 @@
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXDataModelDidWaveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
+    [waveModel release];
     [super dealloc];
 }
 
@@ -44,12 +71,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didWave:) name:MEXDataModelDidWaveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didWave:) name:MEXWaveModelDidWaveNotification object:nil];
+        
+    // Set crowd type on view from model
+    self.waveModel.crowdType; // TODO:
 }
  
 - (void)viewDidUnload {
     [super viewDidUnload];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXDataModelDidWaveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
 }
 
 #pragma mark - Orientation

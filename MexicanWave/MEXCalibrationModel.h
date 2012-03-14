@@ -8,12 +8,15 @@
 
 #import <CoreLocation/CoreLocation.h>
 
-// Right now we don't allow clients to specify an error limit
+
+typedef void(^MEXCalibrationCompletionBlock)(float calibratedheadingInDegrees, NSError* error);
+
 
 @interface MEXCalibrationModel : NSObject <CLLocationManagerDelegate>
 
 @property (nonatomic,readonly) float headingInDegreesEastOfNorth;       // KVO this to get dynamic updates
 
-- (void)startCalibratingWithErrorPercentage:(float)errorPercentage timeout:(NSTimeInterval)maxTimeToAcquireResult completionBlock:(void(^)())completionBlock;
+// Right now we don't allow clients to specify an error limit, just a timeout
+- (void)startCalibratingWithErrorPercentage:(float)errorPercentage timeout:(NSTimeInterval)maxTimeToAcquireResult completionBlock:(MEXCalibrationCompletionBlock)completionBlock;
 - (void)cancelCalibration;
 @end

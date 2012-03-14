@@ -11,16 +11,46 @@
 #define MIN_WAVE_PERIOD 0.5
 #define MAX_WAVE_PERIOD 10.0
 
-NSString* const MEXDataModelDidWaveNotification = @"MEXDataModelDidWaveNotification";
+NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotification";
 
 @implementation MEXWaveModel
 
-@synthesize crowdType, headingInDegreesEastOfNorth;
+@synthesize crowdType, deviceHeadingInDegreesEastOfNorth;
+
+- (NSUInteger)numberOfWaves {
+    return (self.crowdType == kMEXCrowdTypeStageBased) ? 2 : 1;
+}
+
+- (float)angleForWaveAtIndex:(NSUInteger)waveIndex date:(NSDate*)date {    
+    return 2.0f * M_PI * (fmod([date timeIntervalSinceReferenceDate], self.wavePeriodInSeconds)/self.wavePeriodInSeconds + ((float)waveIndex/(float)[self numberOfWaves]));
+}
+
+- (NSTimeInterval)wavePeriodInSeconds {
+    float crowdSizeFactor = 1.0f;
+    switch (self.crowdType) {
+        case kMEXCrowdTypeSmallGroup:
+            crowdSizeFactor = 0.1;
+            break;
+            
+        case kMEXCrowdTypeStageBased:
+            crowdSizeFactor = 0.5;
+            break;
+            
+        case kMEXCrowdTypeStadium:
+            crowdSizeFactor = 1.0;
+            break;
+            
+        default:
+            NSAssert(NO, @"Unhandled crowd size enum value %d", self.crowdType);
+            break;
+    }
+    return MIN_WAVE_PERIOD + (MAX_WAVE_PERIOD - MIN_WAVE_PERIOD) * crowdSizeFactor;
+}
 
 #pragma mark - Waving
 
 - (void)didWave {
-    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:MEXDataModelDidWaveNotification object:self]];
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:MEXWaveModelDidWaveNotification object:self]];
 }
 
 - (void)cancelWave {
@@ -41,57 +71,12 @@ NSString* const MEXDataModelDidWaveNotification = @"MEXDataModelDidWaveNotificat
     }
 
     NSDate* now = [NSDate date];
-    const NSTimeInterval timeOffsetDueToAngle = self.headingInDegreesEastOfNorth / 360.0 * self.wavePeriodInSeconds;
+    const NSTimeInterval timeOffsetDueToAngle = self.deviceHeadingInDegreesEastOfNorth / 360.0 * self.wavePeriodInSeconds;
     const NSTimeInterval timeToNextWave = timeOffsetDueToAngle + self.wavePeriodInSeconds - fmod([now timeIntervalSinceReferenceDate], self.wavePeriodInSeconds);        
     [self performSelector:@selector(didWave) withObject:nil afterDelay:timeToNextWave];
 }
-
-- (NSTimeInterval)wavePeriodInSeconds {
-    float crowdSizeFactor = 1.0f;
-    switch (self.crowdType) {
-        case kMEXCrowdTypeSmallGroup:
-            crowdSizeFactor = 0.1;
-            break;
-            
-        case kMEXCrowdTypeStageBased:
-            crowdSizeFactor = 0.5;
-            break;
-
-        case kMEXCrowdTypeStadium:
-            crowdSizeFactor = 1.0;
-            break;
-
-        default:
-            NSAssert(NO, @"Unhandled crowd size enum value %d", self.crowdType);
-            break;
-    }
-    return MIN_WAVE_PERIOD + (MAX_WAVE_PERIOD - MIN_WAVE_PERIOD) * crowdSizeFactor;
-}
      
-- (void)setCrowdSize:(MEXCrowdType)newType {
-    if(crowdType != newType) {
-        crowdType = newType;
-        [self scheduleWave];
-    }
-}
-
-- (void)setHeadingInDegreesEastOfNorth:(float)newAngle {
-    if(headingInDegreesEastOfNorth != newAngle) {
-        headingInDegreesEastOfNorth = newAngle;
-        [self scheduleWave];
-    }
-}
-
 #pragma mark - Lifecycle
-
-+ (id)sharedDataModel {
-    static id instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[self alloc] init];
-    });
-    return instance;
-}
 
 - (id)init {
     if(!(self = [super init])) {

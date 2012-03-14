@@ -14,16 +14,15 @@ typedef enum {
     kMEXCrowdTypeStadium
 } MEXCrowdType;
 
-NSString* const MEXDataModelDidWaveNotification;
-
+NSString* const MEXWaveModelDidWaveNotification;
 
 @interface MEXWaveModel : NSObject
 
 @property (nonatomic) MEXCrowdType crowdType;
-@property (nonatomic) float headingInDegreesEastOfNorth;
-
+@property (nonatomic) float deviceHeadingInDegreesEastOfNorth;
 @property (nonatomic,readonly) NSTimeInterval wavePeriodInSeconds;
 
-+ (id)sharedDataModel;
+- (NSUInteger)numberOfWaves;
+- (float)angleForWaveAtIndex:(NSUInteger)waveIndex date:(NSDate*)date;
 
 @end

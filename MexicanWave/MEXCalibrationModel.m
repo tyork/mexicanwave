@@ -8,10 +8,12 @@
 
 #import "MEXCalibrationModel.h"
 
+
+
 #define DEFAULT_MAX_ERROR 0.75f
 
 @interface MEXCalibrationModel ()
-@property (nonatomic,copy) void (^completionBlock)();
+@property (nonatomic,copy) MEXCalibrationCompletionBlock completionBlock;
 @property (nonatomic,retain) CLLocationManager* locationManager;
 @property (nonatomic,readwrite) float headingInDegreesEastOfNorth;
 @end
@@ -23,7 +25,7 @@
 
 - (void)didAcquireHeading {
     if(self.completionBlock) {
-        completionBlock();
+        completionBlock(self.headingInDegreesEastOfNorth, nil);
         self.completionBlock = nil;
     }
     [self.locationManager stopUpdatingHeading];
@@ -33,7 +35,7 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(didAcquireHeading) object:nil];  
 }
 
-- (void)startCalibratingWithErrorPercentage:(float)errorPercentage timeout:(NSTimeInterval)maxTimeToAcquireResult completionBlock:(void(^)())aCompletionBlock {
+- (void)startCalibratingWithErrorPercentage:(float)errorPercentage timeout:(NSTimeInterval)maxTimeToAcquireResult completionBlock:(MEXCalibrationCompletionBlock)aCompletionBlock {
     if(self.completionBlock) {
         [self cancelTimeout];
         self.completionBlock = nil;

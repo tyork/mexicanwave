@@ -7,24 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1903F02E1510BDB400807542 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1903F02C1510BDB300807542 /* MainWindow.xib */; };
+		1903F3701510E5EC00807542 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1903F36A1510E5EC00807542 /* InfoPlist.strings */; };
+		1903F3711510E5EC00807542 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1903F36C1510E5EC00807542 /* MainWindow.xib */; };
+		1903F3721510E5EC00807542 /* MEXWavingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1903F36E1510E5EC00807542 /* MEXWavingViewController.xib */; };
 		199CB60514FEA3CA00A16A97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60414FEA3CA00A16A97 /* UIKit.framework */; };
 		199CB60714FEA3CA00A16A97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60614FEA3CA00A16A97 /* Foundation.framework */; };
 		199CB60914FEA3CA00A16A97 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60814FEA3CA00A16A97 /* CoreGraphics.framework */; };
 		199CB60F14FEA3CA00A16A97 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 199CB60D14FEA3CA00A16A97 /* InfoPlist.strings */; };
 		199CB61114FEA3CA00A16A97 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB61014FEA3CA00A16A97 /* main.m */; };
 		199CB61514FEA3CA00A16A97 /* MEXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB61414FEA3CA00A16A97 /* MEXAppDelegate.m */; };
-		199CB62414FEA42100A16A97 /* MEXCalibrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB62214FEA42100A16A97 /* MEXCalibrationViewController.m */; };
-		199CB62814FEA44D00A16A97 /* MEXCalibrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 199CB62614FEA44D00A16A97 /* MEXCalibrationViewController.xib */; };
 		199CB62C14FEA47C00A16A97 /* MEXWavingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB62A14FEA47C00A16A97 /* MEXWavingViewController.m */; };
-		199CB62F14FEA49200A16A97 /* MEXWavingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 199CB62E14FEA49200A16A97 /* MEXWavingViewController.xib */; };
 		199CB63214FEAAC000A16A97 /* MEXWaveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB63114FEAABF00A16A97 /* MEXWaveModel.m */; };
 		199CB63514FF84DE00A16A97 /* MEXCalibrationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB63414FF84DD00A16A97 /* MEXCalibrationModel.m */; };
 		199CB63E14FF8FF700A16A97 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB63D14FF8FF700A16A97 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1903F02D1510BDB400807542 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		1903F36B1510E5EC00807542 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		1903F36D1510E5EC00807542 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MainWindow.xib; sourceTree = "<group>"; };
+		1903F36F1510E5EC00807542 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MEXWavingViewController.xib; sourceTree = "<group>"; };
 		199CB60014FEA3CA00A16A97 /* MexicanWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MexicanWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		199CB60414FEA3CA00A16A97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		199CB60614FEA3CA00A16A97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -35,12 +36,8 @@
 		199CB61214FEA3CA00A16A97 /* MexicanWave-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MexicanWave-Prefix.pch"; sourceTree = "<group>"; };
 		199CB61314FEA3CA00A16A97 /* MEXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEXAppDelegate.h; sourceTree = "<group>"; };
 		199CB61414FEA3CA00A16A97 /* MEXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEXAppDelegate.m; sourceTree = "<group>"; };
-		199CB62114FEA42100A16A97 /* MEXCalibrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXCalibrationViewController.h; sourceTree = "<group>"; };
-		199CB62214FEA42100A16A97 /* MEXCalibrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXCalibrationViewController.m; sourceTree = "<group>"; };
-		199CB62714FEA44D00A16A97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MEXCalibrationViewController.xib; sourceTree = "<group>"; };
 		199CB62914FEA47B00A16A97 /* MEXWavingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXWavingViewController.h; sourceTree = "<group>"; };
 		199CB62A14FEA47C00A16A97 /* MEXWavingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXWavingViewController.m; sourceTree = "<group>"; };
-		199CB62E14FEA49200A16A97 /* MEXWavingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MEXWavingViewController.xib; sourceTree = "<group>"; };
 		199CB63014FEAABE00A16A97 /* MEXWaveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXWaveModel.h; sourceTree = "<group>"; };
 		199CB63114FEAABF00A16A97 /* MEXWaveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXWaveModel.m; sourceTree = "<group>"; };
 		199CB63314FF84DC00A16A97 /* MEXCalibrationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXCalibrationModel.h; sourceTree = "<group>"; };
@@ -63,9 +60,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1903F3681510E5CF00807542 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1903F3691510E5EC00807542 /* en.lproj */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1903F3691510E5EC00807542 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				1903F36A1510E5EC00807542 /* InfoPlist.strings */,
+				1903F36C1510E5EC00807542 /* MainWindow.xib */,
+				1903F36E1510E5EC00807542 /* MEXWavingViewController.xib */,
+			);
+			name = en.lproj;
+			path = MexicanWave/en.lproj;
+			sourceTree = "<group>";
+		};
 		199CB5F514FEA3CA00A16A97 = {
 			isa = PBXGroup;
 			children = (
+				1903F3681510E5CF00807542 /* Resources */,
 				199CB60A14FEA3CA00A16A97 /* MexicanWave */,
 				199CB60314FEA3CA00A16A97 /* Frameworks */,
 				199CB60114FEA3CA00A16A97 /* Products */,
@@ -94,7 +111,6 @@
 		199CB60A14FEA3CA00A16A97 /* MexicanWave */ = {
 			isa = PBXGroup;
 			children = (
-				1903F02C1510BDB300807542 /* MainWindow.xib */,
 				199CB61314FEA3CA00A16A97 /* MEXAppDelegate.h */,
 				199CB61414FEA3CA00A16A97 /* MEXAppDelegate.m */,
 				199CB63014FEAABE00A16A97 /* MEXWaveModel.h */,
@@ -122,9 +138,6 @@
 			children = (
 				199CB63314FF84DC00A16A97 /* MEXCalibrationModel.h */,
 				199CB63414FF84DD00A16A97 /* MEXCalibrationModel.m */,
-				199CB62114FEA42100A16A97 /* MEXCalibrationViewController.h */,
-				199CB62214FEA42100A16A97 /* MEXCalibrationViewController.m */,
-				199CB62614FEA44D00A16A97 /* MEXCalibrationViewController.xib */,
 			);
 			name = Calibration;
 			sourceTree = "<group>";
@@ -134,7 +147,6 @@
 			children = (
 				199CB62914FEA47B00A16A97 /* MEXWavingViewController.h */,
 				199CB62A14FEA47C00A16A97 /* MEXWavingViewController.m */,
-				199CB62E14FEA49200A16A97 /* MEXWavingViewController.xib */,
 			);
 			name = Waving;
 			sourceTree = "<group>";
@@ -191,9 +203,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				199CB60F14FEA3CA00A16A97 /* InfoPlist.strings in Resources */,
-				199CB62814FEA44D00A16A97 /* MEXCalibrationViewController.xib in Resources */,
-				199CB62F14FEA49200A16A97 /* MEXWavingViewController.xib in Resources */,
-				1903F02E1510BDB400807542 /* MainWindow.xib in Resources */,
+				1903F3701510E5EC00807542 /* InfoPlist.strings in Resources */,
+				1903F3711510E5EC00807542 /* MainWindow.xib in Resources */,
+				1903F3721510E5EC00807542 /* MEXWavingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +218,6 @@
 			files = (
 				199CB61114FEA3CA00A16A97 /* main.m in Sources */,
 				199CB61514FEA3CA00A16A97 /* MEXAppDelegate.m in Sources */,
-				199CB62414FEA42100A16A97 /* MEXCalibrationViewController.m in Sources */,
 				199CB62C14FEA47C00A16A97 /* MEXWavingViewController.m in Sources */,
 				199CB63214FEAAC000A16A97 /* MEXWaveModel.m in Sources */,
 				199CB63514FF84DE00A16A97 /* MEXCalibrationModel.m in Sources */,
@@ -216,12 +227,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1903F02C1510BDB300807542 /* MainWindow.xib */ = {
+		1903F36A1510E5EC00807542 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				1903F02D1510BDB400807542 /* en */,
+				1903F36B1510E5EC00807542 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1903F36C1510E5EC00807542 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1903F36D1510E5EC00807542 /* en */,
 			);
 			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		1903F36E1510E5EC00807542 /* MEXWavingViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1903F36F1510E5EC00807542 /* en */,
+			);
+			name = MEXWavingViewController.xib;
 			sourceTree = "<group>";
 		};
 		199CB60D14FEA3CA00A16A97 /* InfoPlist.strings */ = {
@@ -230,14 +257,6 @@
 				199CB60E14FEA3CA00A16A97 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		199CB62614FEA44D00A16A97 /* MEXCalibrationViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				199CB62714FEA44D00A16A97 /* en */,
-			);
-			name = MEXCalibrationViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
