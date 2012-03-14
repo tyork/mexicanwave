@@ -7,54 +7,102 @@
 //
 
 #import "MEXWavingViewController.h"
-#import "MEXDataModel.h"
+#import "MEXWaveModel.h"
+#import "MEXCalibrationModel.h"
+#import "MEXWaveFxView.h"
 
 @implementation MEXWavingViewController
 
-- (IBAction)didTapDoneButton:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+@synthesize waveView;
+@synthesize waveModel, calibrationModel;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+- (MEXWaveModel*)waveModel {
+    if(!waveModel) {
+        waveModel = [[MEXWaveModel alloc] init];
     }
-    return self;
+    return waveModel;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
+- (MEXCalibrationModel*)calibrationModel {
+    if(!calibrationModel) {
+        calibrationModel = [[MEXCalibrationModel alloc] init];
+    }
+    return calibrationModel;
+}
+
+#pragma mark - UI actions
+
+- (IBAction)didTapSmallAudienceButton:(id)sender {
+    self.waveModel.crowdType = kMEXCrowdTypeSmallGroup;
+}
+
+- (IBAction)didTapGigButton:(id)sender {
+    self.waveModel.crowdType = kMEXCrowdTypeStageBased;    
+}
+
+- (IBAction)didTapStadiumButton:(id)sender {
+    self.waveModel.crowdType = kMEXCrowdTypeStadium;
+}
+
+- (IBAction)didTapCalibrationButton:(id)sender {
+    [self.calibrationModel startCalibratingWithErrorPercentage:0 timeout:4.0 completionBlock:^(float deviceHeading, NSError* error) {
+        self.waveModel.deviceHeadingInDegreesEastOfNorth = [self.calibrationModel headingInDegreesEastOfNorth];
+    }];
+}
+
+#pragma mark - Wave trigger
+
+- (void)didWave:(NSNotification*)note {
+    // TODO:
+}
+
+#pragma mark - Lifecycle
+
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXDataModelDidWaveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
+    [waveModel release];
+    [calibrationModel release];
+    [waveView release];
     [super dealloc];
 }
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.waveView setAllLampIntensities:1.0f animated:animated];
+}
+
+- (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didWave) name:MEXDataModelDidWaveNotification object:nil];
-}
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didWave:) name:MEXWaveModelDidWaveNotification object:nil];
+        
+    NSArray* locations = [NSArray arrayWithObjects:[NSValue valueWithCGPoint:CGPointMake(100, 100)],nil];
+    NSArray* scaleFactors = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.0f],nil];
 
-- (void)viewDidUnload
-{
+    
+    [self.waveView configureLampsWithLocations:locations scaleFactors:scaleFactors];    
+    [self.waveView setAllLampIntensities:0 animated:NO];
+    
+    // Set crowd type on view from model
+    self.waveModel.crowdType; // TODO:
+}
+ 
+- (void)viewDidUnload {
     [super viewDidUnload];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXDataModelDidWaveNotification object:nil];
+    self.waveView = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+#pragma mark - Orientation
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
 }
 
 @end
