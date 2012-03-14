@@ -8,8 +8,6 @@
 
 #import "MEXAppDelegate.h"
 
-#import "MEXCrowdCountViewController.h"
-
 @implementation MEXAppDelegate
 
 @synthesize window = _window;
@@ -25,13 +23,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-    
-    MEXCrowdCountViewController* baseController = [[[MEXCrowdCountViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-    UINavigationController* navController = [[[UINavigationController alloc] initWithRootViewController:baseController] autorelease];
-    self.viewController = navController;
-    
-    self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
 }

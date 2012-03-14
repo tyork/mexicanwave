@@ -11,25 +11,28 @@
 
 @implementation MEXWavingViewController
 
-- (IBAction)didTapDoneButton:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+- (IBAction)didTapSmallAudienceButton:(id)sender {
     
-    // Release any cached data, images, etc that aren't in use.
+}
+
+- (IBAction)didTapGigButton:(id)sender {
+    
+}
+
+- (IBAction)didTapStadiumButton:(id)sender {
+    
+}
+
+#pragma mark - Wave trigger
+
+- (void)didWave:(NSNotification*)note {
+    
+}
+
+#pragma mark - Lifecycle
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
 - (void)dealloc {
@@ -39,22 +42,20 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didWave) name:MEXDataModelDidWaveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didWave:) name:MEXDataModelDidWaveNotification object:nil];
 }
-
-- (void)viewDidUnload
-{
+ 
+- (void)viewDidUnload {
     [super viewDidUnload];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXDataModelDidWaveNotification object:nil];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+#pragma mark - Orientation
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
 }
 
 @end

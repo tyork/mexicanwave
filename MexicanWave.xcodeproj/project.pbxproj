@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1903F02E1510BDB400807542 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1903F02C1510BDB300807542 /* MainWindow.xib */; };
 		199CB60514FEA3CA00A16A97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60414FEA3CA00A16A97 /* UIKit.framework */; };
 		199CB60714FEA3CA00A16A97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60614FEA3CA00A16A97 /* Foundation.framework */; };
 		199CB60914FEA3CA00A16A97 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60814FEA3CA00A16A97 /* CoreGraphics.framework */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1903F02D1510BDB400807542 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		199CB60014FEA3CA00A16A97 /* MexicanWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MexicanWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		199CB60414FEA3CA00A16A97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		199CB60614FEA3CA00A16A97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -97,6 +99,7 @@
 		199CB60A14FEA3CA00A16A97 /* MexicanWave */ = {
 			isa = PBXGroup;
 			children = (
+				1903F02C1510BDB300807542 /* MainWindow.xib */,
 				199CB61314FEA3CA00A16A97 /* MEXAppDelegate.h */,
 				199CB61414FEA3CA00A16A97 /* MEXAppDelegate.m */,
 				199CB63014FEAABE00A16A97 /* MEXDataModel.h */,
@@ -207,6 +210,7 @@
 				199CB61B14FEA3CA00A16A97 /* MEXCrowdCountViewController.xib in Resources */,
 				199CB62814FEA44D00A16A97 /* MEXCalibrationViewController.xib in Resources */,
 				199CB62F14FEA49200A16A97 /* MEXWavingViewController.xib in Resources */,
+				1903F02E1510BDB400807542 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +234,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1903F02C1510BDB300807542 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1903F02D1510BDB400807542 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
 		199CB60D14FEA3CA00A16A97 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -341,6 +353,7 @@
 				199CB62014FEA3CA00A16A97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

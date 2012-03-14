@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+/*
+typedef enum {
+    kMEXCrowdSizeSmall,
+    kMEXCrowdSizeMedium,
+    kMEXCrowdSizeLarge
+} MEXCrowdSize;
+*/
+
 NSString* const MEXDataModelDidWaveNotification;
 
 

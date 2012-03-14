@@ -11,6 +11,8 @@
 @interface MEXWavingViewController : UIViewController
 
 
-- (IBAction)didTapDoneButton:(id)sender;
+- (IBAction)didTapSmallAudienceButton:(id)sender;
+- (IBAction)didTapGigButton:(id)sender;
+- (IBAction)didTapStadiumButton:(id)sender;
 
 @end
