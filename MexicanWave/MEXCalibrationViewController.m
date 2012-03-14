@@ -8,7 +8,7 @@
 
 #import "MEXCalibrationViewController.h"
 #import "MEXWavingViewController.h"
-#import "MEXDataModel.h"
+#import "MEXWaveModel.h"
 
 #define kModelAngleKeyPath @"headingInDegreesEastOfNorth"
 
@@ -58,7 +58,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.model startCalibratingWithErrorPercentage:0 timeout:4.0 completionBlock:^{
-        [[MEXDataModel sharedDataModel] setHeadingInDegreesEastOfNorth:self.model.headingInDegreesEastOfNorth];
+        [[MEXWaveModel sharedDataModel] setHeadingInDegreesEastOfNorth:self.model.headingInDegreesEastOfNorth];
 
         MEXWavingViewController* wavingVC = [[[MEXWavingViewController alloc] initWithNibName:nil bundle:nil] autorelease];
         [self.navigationController pushViewController:wavingVC animated:YES];

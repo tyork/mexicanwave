@@ -7,7 +7,7 @@
 //
 
 #import "MEXWavingViewController.h"
-#import "MEXDataModel.h"
+#import "MEXWaveModel.h"
 
 @implementation MEXWavingViewController
 
