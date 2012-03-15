@@ -58,7 +58,12 @@
 #pragma mark - Wave trigger
 
 - (void)didWave:(NSNotification*)note {
-    // TODO:
+    if(!self.isViewLoaded) {
+        return;
+    }
+    
+    [self.waveView setAllLampIntensitiesForLineFromPoint:CGPointMake(158.0f, 155.0f) angle:[self.waveModel angleForWaveAtIndex:0 date:[NSDate date]] animated:YES];
+    [self performSelector:@selector(didWave:) withObject:nil afterDelay:0.2f];
 }
 
 #pragma mark - Lifecycle
@@ -114,22 +119,25 @@
     self.crowdTypeSelectionControl = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
     [self.calibrationModel stopCalibrating];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(didWave:) object:nil];    // TODO: temp
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.calibrationModel startCalibrating];    
+    [self.calibrationModel startCalibrating];  
+    
+    [self didWave:nil];// TODO: temp.
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.calibrationModel stopCalibrating];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(didWave:) object:nil];    // TODO: temp
 }
 #pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    
-    [self.waveView setAllLampIntensitiesForLineFromPoint:CGPointMake(158.0f, 155.0f) angle:self.calibrationModel.headingInDegreesEastOfNorth animated:YES];    
+    self.waveModel.deviceHeadingInDegreesEastOfNorth = self.calibrationModel.headingInDegreesEastOfNorth;
 }
 
 #pragma mark - Orientation
