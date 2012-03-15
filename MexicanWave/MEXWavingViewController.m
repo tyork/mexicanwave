@@ -10,6 +10,7 @@
 #import "MEXWaveModel.h"
 #import "MEXCalibrationModel.h"
 #import "MEXWaveFxView.h"
+#import "MEXCrowdTypeSelectionControl.h"
 
 
 #define SIGN(x) ((x) < 0.0f ? -1.0f : 1.0f)
@@ -17,6 +18,7 @@
 @implementation MEXWavingViewController
 
 @synthesize waveView;
+@synthesize crowdTypeSelectionControl;
 @synthesize waveModel, calibrationModel;
 
 - (MEXWaveModel*)waveModel {
@@ -35,19 +37,22 @@
 
 #pragma mark - UI actions
 
-- (IBAction)didTapSmallAudienceButton:(id)sender {
-    self.waveModel.crowdType = kMEXCrowdTypeSmallGroup;
-}
+- (IBAction)didChangeCrowdType:(id)sender {
+    switch ([(MEXCrowdTypeSelectionControl*)sender selectedSegment]) {
+        case MEXCrowdTypeSelectionSegmentLeft:
+            self.waveModel.crowdType = kMEXCrowdTypeSmallGroup;
+            break;
+            
+        case MEXCrowdTypeSelectionSegmentMiddle:
+            self.waveModel.crowdType = kMEXCrowdTypeStageBased;    
+            break;
 
-- (IBAction)didTapGigButton:(id)sender {
-    self.waveModel.crowdType = kMEXCrowdTypeStageBased;    
-}
-
-- (IBAction)didTapStadiumButton:(id)sender {
-    self.waveModel.crowdType = kMEXCrowdTypeStadium;
-}
-
-- (IBAction)didTapCalibrationButton:(id)sender {
+        case MEXCrowdTypeSelectionSegmentRight:
+            self.waveModel.crowdType = kMEXCrowdTypeStadium;
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark - Wave trigger
@@ -68,6 +73,7 @@
     [calibrationModel release];
     [waveModel release];
     [waveView release];
+    [crowdTypeSelectionControl release];
     [super dealloc];
 }
 
@@ -85,33 +91,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didWave:) name:MEXWaveModelDidWaveNotification object:nil];
+    [self.calibrationModel addObserver:self forKeyPath:@"headingInDegreesEastOfNorth" options:NSKeyValueObservingOptionNew context:NULL];
     
     
     NSArray* angles = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.24f],[NSNumber numberWithFloat:0.48f],[NSNumber numberWithFloat:0.68f],[NSNumber numberWithFloat:0.815f],[NSNumber numberWithFloat:0.896f],[NSNumber numberWithFloat:0.945f],[NSNumber numberWithFloat:0.98f],[NSNumber numberWithFloat:0.995f],[NSNumber numberWithFloat:1.0f],[NSNumber numberWithFloat:-0.24f],[NSNumber numberWithFloat:-0.48f],[NSNumber numberWithFloat:-0.68f],[NSNumber numberWithFloat:-0.815f],[NSNumber numberWithFloat:-0.896f],[NSNumber numberWithFloat:-0.945f],[NSNumber numberWithFloat:-0.98f],[NSNumber numberWithFloat:-0.995f],nil];
-
-    
-    
     NSMutableArray* locations = [[NSMutableArray alloc] initWithCapacity:angles.count]; 
     NSMutableArray* scaleFactors = [[NSMutableArray alloc] initWithCapacity:angles.count]; 
-
     for(NSUInteger angleIndex = 0; angleIndex < angles.count; angleIndex++) {
         const float angle = [[angles objectAtIndex:angleIndex] floatValue];
         [locations addObject:[NSValue valueWithCGPoint:[self positionOnProjectedCircleForAngle:angle center:CGPointMake(158.0f, 155.0f)]]];
         [scaleFactors addObject:[NSNumber numberWithFloat:[self scaleFactorOnProjectedCircleForAngle:angle]]];
     }
-    
-    
     [self.waveView configureLampsWithLocations:locations scaleFactors:scaleFactors];    
     
     // Set crowd type on view from model
-    self.waveModel.crowdType; // TODO:
-    
-    [self.calibrationModel addObserver:self forKeyPath:@"headingInDegreesEastOfNorth" options:NSKeyValueObservingOptionNew context:NULL];
+    self.crowdTypeSelectionControl.selectedSegment = (MEXCrowdTypeSelectionSegment)self.waveModel.crowdType;
 }
  
 - (void)viewDidUnload {
     [super viewDidUnload];
     self.waveView = nil;
+    self.crowdTypeSelectionControl = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
     [self.calibrationModel stopCalibrating];
 }
