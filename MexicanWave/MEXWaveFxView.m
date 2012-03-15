@@ -50,6 +50,25 @@
     self.lampViews = newLamps;
 }
 
+- (void)setAllLampIntensitiesForLineFromPoint:(CGPoint)start angle:(float)angleInDegrees animated:(BOOL)animated {
+    
+    const CGPoint lineDirectionCosines = CGPointMake(sinf((float)M_PI * angleInDegrees / 180.0f), cosf((float)M_PI * angleInDegrees / 180.0f));
+    
+    [UIView animateWithDuration:animated ? 0.1 : 0 animations:^{
+        [self.lampViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            MEXLampView* oneLamp = (MEXLampView*)obj;
+                        
+            CGPoint toLamp = CGPointMake(oneLamp.center.x - start.x, oneLamp.center.y - start.y);
+            const CGFloat toLampLength = sqrtf(toLamp.x*toLamp.x + toLamp.y*toLamp.y);
+            toLamp.x /= toLampLength;
+            toLamp.y /= toLampLength;
+            const CGFloat proportionalAlpha = 0.5f*(lineDirectionCosines.x*toLamp.x + lineDirectionCosines.y*toLamp.y) + 0.5f;
+            oneLamp.alpha = proportionalAlpha*proportionalAlpha*proportionalAlpha;
+        }];
+    }];    
+}
+
+
 - (void)setLampIntensity:(float)intensity atLampIndex:(NSUInteger)lampIndex animated:(BOOL)animated {
     const float alphaToSet = MIN(1, MAX(0, intensity));
     MEXLampView* oneLamp = [self.lampViews objectAtIndex:lampIndex];

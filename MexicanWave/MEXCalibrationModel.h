@@ -17,6 +17,6 @@ typedef void(^MEXCalibrationCompletionBlock)(float calibratedheadingInDegrees, N
 @property (nonatomic,readonly) float headingInDegreesEastOfNorth;       // KVO this to get dynamic updates
 
 // Right now we don't allow clients to specify an error limit, just a timeout
-- (void)startCalibratingWithErrorPercentage:(float)errorPercentage timeout:(NSTimeInterval)maxTimeToAcquireResult completionBlock:(MEXCalibrationCompletionBlock)completionBlock;
-- (void)cancelCalibration;
+- (void)startCalibrating;
+- (void)stopCalibrating;
 @end

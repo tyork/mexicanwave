@@ -48,9 +48,6 @@
 }
 
 - (IBAction)didTapCalibrationButton:(id)sender {
-    [self.calibrationModel startCalibratingWithErrorPercentage:0 timeout:4.0 completionBlock:^(float deviceHeading, NSError* error) {
-        self.waveModel.deviceHeadingInDegreesEastOfNorth = [self.calibrationModel headingInDegreesEastOfNorth];
-    }];
 }
 
 #pragma mark - Wave trigger
@@ -67,23 +64,14 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
-    [waveModel release];
+    [calibrationModel removeObserver:self forKeyPath:MEXWaveModelDidWaveNotification];
     [calibrationModel release];
+    [waveModel release];
     [waveView release];
     [super dealloc];
 }
 
 #pragma mark - View lifecycle
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-
-    double delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self.waveView setAllLampIntensities:1.0f animated:animated];
-    });
-}
 
 - (CGPoint)positionOnProjectedCircleForAngle:(float)angle center:(CGPoint)center {
     const float y = 132.0f*2.0f*(fabsf(angle) - 0.5f);
@@ -114,16 +102,34 @@
     
     
     [self.waveView configureLampsWithLocations:locations scaleFactors:scaleFactors];    
-    [self.waveView setAllLampIntensities:0 animated:NO];
     
     // Set crowd type on view from model
     self.waveModel.crowdType; // TODO:
+    
+    [self.calibrationModel addObserver:self forKeyPath:@"headingInDegreesEastOfNorth" options:NSKeyValueObservingOptionNew context:NULL];
 }
  
 - (void)viewDidUnload {
     [super viewDidUnload];
     self.waveView = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
+    [self.calibrationModel stopCalibrating];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.calibrationModel startCalibrating];    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.calibrationModel stopCalibrating];
+}
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    
+    [self.waveView setAllLampIntensitiesForLineFromPoint:CGPointMake(158.0f, 155.0f) angle:self.calibrationModel.headingInDegreesEastOfNorth animated:YES];    
 }
 
 #pragma mark - Orientation
