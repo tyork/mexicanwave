@@ -43,6 +43,8 @@
 		199CB63214FEAAC000A16A97 /* MEXWaveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB63114FEAABF00A16A97 /* MEXWaveModel.m */; };
 		199CB63514FF84DE00A16A97 /* MEXCalibrationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB63414FF84DD00A16A97 /* MEXCalibrationModel.m */; };
 		199CB63E14FF8FF700A16A97 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB63D14FF8FF700A16A97 /* CoreLocation.framework */; };
+		E254CA211513400400DAB66E /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E254CA1F1513400400DAB66E /* AppIcon.png */; };
+		E254CA221513400400DAB66E /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E254CA201513400400DAB66E /* AppIcon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +94,8 @@
 		199CB63314FF84DC00A16A97 /* MEXCalibrationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXCalibrationModel.h; sourceTree = "<group>"; };
 		199CB63414FF84DD00A16A97 /* MEXCalibrationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXCalibrationModel.m; sourceTree = "<group>"; };
 		199CB63D14FF8FF700A16A97 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E254CA1F1513400400DAB66E /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
+		E254CA201513400400DAB66E /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 		1903F3891510E64A00807542 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E254CA1F1513400400DAB66E /* AppIcon.png */,
+				E254CA201513400400DAB66E /* AppIcon@2x.png */,
 				1903F3B61510EC2200807542 /* light-blob.png */,
 				1903F3B71510EC2200807542 /* icon-stadium.png */,
 				1903F3B81510EC2300807542 /* icon-music.png */,
@@ -310,6 +316,8 @@
 				1903F3C71510EC2800807542 /* button-m.png in Resources */,
 				1903F3C81510EC2800807542 /* button-l.png in Resources */,
 				1903F3C91510EC2800807542 /* background.png in Resources */,
+				E254CA211513400400DAB66E /* AppIcon.png in Resources */,
+				E254CA221513400400DAB66E /* AppIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
