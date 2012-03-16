@@ -9,6 +9,8 @@
 #import "MEXWaveFxView.h"
 #import "MEXLampView.h"
 
+#define kActiveTime 0.5
+
 @interface MEXWaveFxView ()
 @property (nonatomic,retain,readwrite) NSArray* lampViews;
 @end
@@ -50,43 +52,13 @@
     self.lampViews = newLamps;
 }
 
-- (void)setLampLevelsForLinesFromCenter:(CGPoint)start angles:(NSArray*)lineAnglesInDegrees animated:(BOOL)animated {
-        
-    NSMutableArray* lineDirectionCosines = [[NSMutableArray alloc] initWithCapacity:lineAnglesInDegrees.count];
-    
-    [lineAnglesInDegrees enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        const float angleInDegrees = [obj floatValue];
-        [lineDirectionCosines addObject:[NSValue valueWithCGPoint:CGPointMake(sinf((float)M_PI * angleInDegrees / 180.0f), cosf((float)M_PI * angleInDegrees / 180.0f))]];
+- (void)animateWithDuration:(NSTimeInterval)duration referenceAngle:(float)referenceAngle numberOfPeaks:(NSUInteger)peaksPerCycle {
 
-    }];
-    
-    [UIView animateWithDuration:animated ? 0.1 : 0.0 animations:^{
-        [self.lampViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            MEXLampView* oneLamp = (MEXLampView*)obj;
-            
-            CGPoint toLamp = CGPointMake(oneLamp.center.x - start.x, oneLamp.center.y - start.y);
-            const CGFloat toLampLength = sqrtf(toLamp.x*toLamp.x + toLamp.y*toLamp.y);
-            toLamp.x /= toLampLength;
-            toLamp.y /= toLampLength;
-            
-            __block float totalLevel = 0;
-            [lineDirectionCosines enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                CGPoint oneCosines = [obj CGPointValue];
-                const CGFloat glowLevel = powf(0.5f*(oneCosines.x*toLamp.x + oneCosines.y*toLamp.y) + 0.5f, 3);
-                totalLevel = MAX(glowLevel, totalLevel);
-            }];
-            oneLamp.glowLevel = totalLevel;
-        }];
-    }];
-    [lineDirectionCosines release];
-}
-
-- (void)setAllLampLevels:(float)intensity animated:(BOOL)animated {
-    const float glowLevel = MIN(1, MAX(0, intensity));
-    [UIView animateWithDuration:animated ? 0.1 : 0.0 animations:^{
-        [self.lampViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            [(MEXLampView*)obj setGlowLevel:glowLevel];
-        }];
+    const NSUInteger numberOfLamps = self.lampViews.count;
+    [self.lampViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        MEXLampView* oneLamp = (MEXLampView*)obj;
+        const float phase = (float)(idx * peaksPerCycle) / (float)numberOfLamps + referenceAngle/360.0f;        
+        [oneLamp animateGlowWithCycleTime:duration activeTime:kActiveTime/(NSTimeInterval)peaksPerCycle phase:phase];
     }];
 }
 

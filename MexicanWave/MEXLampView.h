@@ -12,6 +12,8 @@
 
 
 @property (nonatomic) float bulbScale;
-@property (nonatomic) float glowLevel;
+
+- (void)animateGlowWithCycleTime:(NSTimeInterval)cycleTime activeTime:(NSTimeInterval)activeTime phase:(float)phase;
+- (void)cancelGlowAnimation;
 
 @end

@@ -45,6 +45,7 @@
 		199CB63E14FF8FF700A16A97 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB63D14FF8FF700A16A97 /* CoreLocation.framework */; };
 		E254CA211513400400DAB66E /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E254CA1F1513400400DAB66E /* AppIcon.png */; };
 		E254CA221513400400DAB66E /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E254CA201513400400DAB66E /* AppIcon@2x.png */; };
+		E254CA241513995100DAB66E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E254CA231513995100DAB66E /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		199CB63D14FF8FF700A16A97 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E254CA1F1513400400DAB66E /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
 		E254CA201513400400DAB66E /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
+		E254CA231513995100DAB66E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E254CA241513995100DAB66E /* QuartzCore.framework in Frameworks */,
 				199CB63E14FF8FF700A16A97 /* CoreLocation.framework in Frameworks */,
 				199CB60514FEA3CA00A16A97 /* UIKit.framework in Frameworks */,
 				199CB60714FEA3CA00A16A97 /* Foundation.framework in Frameworks */,
@@ -166,6 +169,7 @@
 		199CB5F514FEA3CA00A16A97 = {
 			isa = PBXGroup;
 			children = (
+				E254CA231513995100DAB66E /* QuartzCore.framework */,
 				1903F3681510E5CF00807542 /* Resources */,
 				199CB60A14FEA3CA00A16A97 /* MexicanWave */,
 				199CB60314FEA3CA00A16A97 /* Frameworks */,

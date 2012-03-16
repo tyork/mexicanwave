@@ -14,8 +14,6 @@
 
 - (void)configureLampsWithLocations:(NSArray*)locations scaleFactors:(NSArray*)scaleFactors;
 
-- (void)setLampLevelsForLinesFromCenter:(CGPoint)start angles:(NSArray*)lineAnglesInDegrees animated:(BOOL)animated;
-
-- (void)setAllLampLevels:(float)intensity animated:(BOOL)animated;
+- (void)animateWithDuration:(NSTimeInterval)duration referenceAngle:(float)referenceAngle numberOfPeaks:(NSUInteger)peaksPerCycle;
 
 @end

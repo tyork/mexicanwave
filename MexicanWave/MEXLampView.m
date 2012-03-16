@@ -7,16 +7,31 @@
 //
 
 #import "MEXLampView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation MEXLampView
 
-@synthesize glowLevel, bulbScale;
+@synthesize bulbScale;
 
-- (void)setGlowLevel:(float)newLevel {
-    NSAssert(self.subviews.count == 2, @"Bulb view or glow view or both not present in a lamp");
-    glowLevel = newLevel;
-    self.alpha = MIN(1, MAX(glowLevel, 0));
+- (void)animateGlowWithCycleTime:(NSTimeInterval)cycleTime activeTime:(NSTimeInterval)activeTime phase:(float)phase {
+    // TODO: smoothly continue
+    [self cancelGlowAnimation];
+    
+    CAKeyframeAnimation* opacityAnim = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
+    opacityAnim.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0],[NSNumber numberWithFloat:1],[NSNumber numberWithFloat:0],nil];
+    opacityAnim.keyTimes = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.5*(1.0-activeTime)],[NSNumber numberWithFloat:0.5],[NSNumber numberWithFloat:0.5*(1.0+activeTime)],nil];
+    opacityAnim.speed = 1.0/cycleTime;
+    opacityAnim.duration = 1.0;
+    opacityAnim.timeOffset = phase - 0.5;
+    opacityAnim.repeatCount = HUGE_VALF;    // Repeat forever
+    
+    [self.layer addAnimation:opacityAnim forKey:@"glow"];
 }
+
+- (void)cancelGlowAnimation {
+    [self.layer removeAnimationForKey:@"glow"];
+}
+
 
 - (void)setBulbScale:(float)newScale {
     NSAssert(self.subviews.count == 2, @"Bulb view or glow view or both not present in a lamp");
@@ -31,7 +46,6 @@
 #pragma mark - Lifecycle
 
 - (void)commonInitialization {
-    glowLevel = 1.0f;
     bulbScale = 1.0f;
     
     self.backgroundColor = [UIColor clearColor];

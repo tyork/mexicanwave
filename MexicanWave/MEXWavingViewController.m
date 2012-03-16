@@ -59,15 +59,7 @@
         return;
     }
     
-    NSDate* now = [NSDate date];
-    NSMutableArray* angles = [[NSMutableArray alloc] initWithCapacity:[self.waveModel numberOfWaves]];
-    for(NSUInteger angleIndex = 0; angleIndex < [self.waveModel numberOfWaves]; angleIndex++) {
-        [angles addObject:[NSNumber numberWithFloat:[self.waveModel angleForWaveAtIndex:angleIndex date:now]]];
-    }
-    
-    [self.waveView setLampLevelsForLinesFromCenter:CGPointMake(158.0f, 155.0f) angles:angles animated:YES];
-    [angles release];
-    [self performSelector:@selector(didWave:) withObject:nil afterDelay:0.2f];
+    [self.waveView animateWithDuration:self.waveModel.wavePeriodInSeconds referenceAngle:[self.waveModel angleForWaveAtIndex:0 date:[NSDate date]] numberOfPeaks:self.waveModel.numberOfWaves];
 }
 
 #pragma mark - Lamp configuration
@@ -84,7 +76,7 @@
 }
 
 - (void)configureLamps {
-    NSArray* angles = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.24f],[NSNumber numberWithFloat:0.48f],[NSNumber numberWithFloat:0.68f],[NSNumber numberWithFloat:0.815f],[NSNumber numberWithFloat:0.896f],[NSNumber numberWithFloat:0.945f],[NSNumber numberWithFloat:0.98f],[NSNumber numberWithFloat:0.995f],[NSNumber numberWithFloat:1.0f],[NSNumber numberWithFloat:-0.24f],[NSNumber numberWithFloat:-0.48f],[NSNumber numberWithFloat:-0.68f],[NSNumber numberWithFloat:-0.815f],[NSNumber numberWithFloat:-0.896f],[NSNumber numberWithFloat:-0.945f],[NSNumber numberWithFloat:-0.98f],[NSNumber numberWithFloat:-0.995f],nil];
+    NSArray* angles = [NSArray arrayWithObjects:[NSNumber numberWithFloat:-0.995f],[NSNumber numberWithFloat:-0.98f],[NSNumber numberWithFloat:-0.945f],[NSNumber numberWithFloat:-0.896f],[NSNumber numberWithFloat:-0.815f],[NSNumber numberWithFloat:-0.68f],[NSNumber numberWithFloat:-0.48f],[NSNumber numberWithFloat:-0.24f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.24f],[NSNumber numberWithFloat:0.48f],[NSNumber numberWithFloat:0.68f],[NSNumber numberWithFloat:0.815f],[NSNumber numberWithFloat:0.896f],[NSNumber numberWithFloat:0.945f],[NSNumber numberWithFloat:0.98f],[NSNumber numberWithFloat:0.995f],[NSNumber numberWithFloat:1.0f],nil];
     NSMutableArray* locations = [[NSMutableArray alloc] initWithCapacity:angles.count]; 
     NSMutableArray* scaleFactors = [[NSMutableArray alloc] initWithCapacity:angles.count]; 
     for(NSUInteger angleIndex = 0; angleIndex < angles.count; angleIndex++) {
@@ -130,25 +122,22 @@
     self.crowdTypeSelectionControl = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
     [self.calibrationModel stopCalibrating];
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(didWave:) object:nil];    // TODO: temp
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.calibrationModel startCalibrating];  
-    
-    [self didWave:nil];// TODO: temp.
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.calibrationModel stopCalibrating];
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(didWave:) object:nil];    // TODO: temp
 }
+
 #pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    self.waveModel.deviceHeadingInDegreesEastOfNorth = self.calibrationModel.headingInDegreesEastOfNorth;
+    ///self.waveModel.deviceHeadingInDegreesEastOfNorth = self.calibrationModel.headingInDegreesEastOfNorth;
 }
 
 #pragma mark - Orientation
