@@ -59,7 +59,7 @@
 }
 
 - (void)configureLamps {
-    NSArray* angles = [NSArray arrayWithObjects:[NSNumber numberWithFloat:-0.995f],[NSNumber numberWithFloat:-0.98f],[NSNumber numberWithFloat:-0.945f],[NSNumber numberWithFloat:-0.896f],[NSNumber numberWithFloat:-0.815f],[NSNumber numberWithFloat:-0.68f],[NSNumber numberWithFloat:-0.48f],[NSNumber numberWithFloat:-0.24f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.24f],[NSNumber numberWithFloat:0.48f],[NSNumber numberWithFloat:0.68f],[NSNumber numberWithFloat:0.815f],[NSNumber numberWithFloat:0.896f],[NSNumber numberWithFloat:0.945f],[NSNumber numberWithFloat:0.98f],[NSNumber numberWithFloat:0.995f],[NSNumber numberWithFloat:1.0f],nil];
+    NSArray* angles = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.24f],[NSNumber numberWithFloat:0.48f],[NSNumber numberWithFloat:0.68f],[NSNumber numberWithFloat:0.815f],[NSNumber numberWithFloat:0.896f],[NSNumber numberWithFloat:0.945f],[NSNumber numberWithFloat:0.98f],[NSNumber numberWithFloat:0.995f],[NSNumber numberWithFloat:1.0f],[NSNumber numberWithFloat:-0.995f],[NSNumber numberWithFloat:-0.98f],[NSNumber numberWithFloat:-0.945f],[NSNumber numberWithFloat:-0.896f],[NSNumber numberWithFloat:-0.815f],[NSNumber numberWithFloat:-0.68f],[NSNumber numberWithFloat:-0.48f],[NSNumber numberWithFloat:-0.24f],nil];
 
     NSMutableArray* newLamps = [[NSMutableArray alloc] initWithCapacity:angles.count];
     
