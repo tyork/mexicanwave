@@ -8,6 +8,8 @@
 
 #import "MEXCalibrationModel.h"
 
+#define kMinimumHeadingDelta 10.0f
+
 @interface MEXCalibrationModel ()
 @property (nonatomic,retain) CLLocationManager* locationManager;
 @property (nonatomic,readwrite) float headingInDegreesEastOfNorth;
@@ -29,7 +31,10 @@
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
-    self.headingInDegreesEastOfNorth = [newHeading magneticHeading];
+    const float latestHeadingAngle = [newHeading magneticHeading];
+    if(fabsf(latestHeadingAngle - self.headingInDegreesEastOfNorth) > kMinimumHeadingDelta) {
+        self.headingInDegreesEastOfNorth = latestHeadingAngle;
+    }
 }
 
 #pragma mark - Lifecycle
