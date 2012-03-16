@@ -10,13 +10,12 @@
 
 @implementation MEXLampView
 
-@synthesize glowFraction, bulbScale;
+@synthesize glowLevel, bulbScale;
 
-- (void)setGlowFraction:(float)newFraction {
+- (void)setGlowLevel:(float)newLevel {
     NSAssert(self.subviews.count == 2, @"Bulb view or glow view or both not present in a lamp");
-    glowFraction = newFraction;
-    UIView* glowView = [self.subviews objectAtIndex:1];
-    glowView.alpha = MIN(1, MAX(glowFraction, 0));
+    glowLevel = newLevel;
+    self.alpha = MIN(1, MAX(glowLevel, 0));
 }
 
 - (void)setBulbScale:(float)newScale {
@@ -29,8 +28,10 @@
     glowView.transform = CGAffineTransformMakeScale(affineScale, affineScale);
 }
 
+#pragma mark - Lifecycle
+
 - (void)commonInitialization {
-    glowFraction = 1.0f;
+    glowLevel = 1.0f;
     bulbScale = 1.0f;
     
     self.backgroundColor = [UIColor clearColor];
@@ -62,6 +63,8 @@
     [self commonInitialization];    
     return self;
 }
+
+#pragma mark - UIView
 
 - (CGSize)sizeThatFits:(CGSize)size {
     NSAssert(self.subviews.count == 2, @"Bulb view or glow view or both not present in a lamp");

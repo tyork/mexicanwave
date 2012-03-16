@@ -11,7 +11,7 @@
 @interface MEXLampView : UIView
 
 
-@property (nonatomic) float glowFraction;
 @property (nonatomic) float bulbScale;
+@property (nonatomic) float glowLevel;
 
 @end

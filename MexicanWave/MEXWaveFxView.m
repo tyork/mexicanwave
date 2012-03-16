@@ -50,41 +50,42 @@
     self.lampViews = newLamps;
 }
 
-- (void)setAllLampIntensitiesForLineFromPoint:(CGPoint)start angle:(float)angleInDegrees animated:(BOOL)animated {
+- (void)setLampLevelsForLinesFromCenter:(CGPoint)start angles:(NSArray*)lineAnglesInDegrees animated:(BOOL)animated {
+        
+    NSMutableArray* lineDirectionCosines = [[NSMutableArray alloc] initWithCapacity:lineAnglesInDegrees.count];
     
-    const CGPoint lineDirectionCosines = CGPointMake(sinf((float)M_PI * angleInDegrees / 180.0f), cosf((float)M_PI * angleInDegrees / 180.0f));
+    [lineAnglesInDegrees enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        const float angleInDegrees = [obj floatValue];
+        [lineDirectionCosines addObject:[NSValue valueWithCGPoint:CGPointMake(sinf((float)M_PI * angleInDegrees / 180.0f), cosf((float)M_PI * angleInDegrees / 180.0f))]];
+
+    }];
     
-    [UIView animateWithDuration:animated ? 0.1 : 0 animations:^{
+    [UIView animateWithDuration:animated ? 0.1 : 0.0 animations:^{
         [self.lampViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             MEXLampView* oneLamp = (MEXLampView*)obj;
-                        
+            
             CGPoint toLamp = CGPointMake(oneLamp.center.x - start.x, oneLamp.center.y - start.y);
             const CGFloat toLampLength = sqrtf(toLamp.x*toLamp.x + toLamp.y*toLamp.y);
             toLamp.x /= toLampLength;
             toLamp.y /= toLampLength;
-            const CGFloat proportionalAlpha = 0.5f*(lineDirectionCosines.x*toLamp.x + lineDirectionCosines.y*toLamp.y) + 0.5f;
-            oneLamp.alpha = proportionalAlpha*proportionalAlpha*proportionalAlpha;
+            
+            __block float totalLevel = 0;
+            [lineDirectionCosines enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                CGPoint oneCosines = [obj CGPointValue];
+                const CGFloat glowLevel = powf(0.5f*(oneCosines.x*toLamp.x + oneCosines.y*toLamp.y) + 0.5f, 3);
+                totalLevel = MAX(glowLevel, totalLevel);
+            }];
+            oneLamp.glowLevel = totalLevel;
         }];
-    }];    
-}
-
-
-- (void)setLampIntensity:(float)intensity atLampIndex:(NSUInteger)lampIndex animated:(BOOL)animated {
-    const float alphaToSet = MIN(1, MAX(0, intensity));
-    MEXLampView* oneLamp = [self.lampViews objectAtIndex:lampIndex];
-    
-    [UIView animateWithDuration:animated ? 0.25 : 0 animations:^{
-        oneLamp.alpha = alphaToSet;            
     }];
+    [lineDirectionCosines release];
 }
 
-- (void)setAllLampIntensities:(float)intensity animated:(BOOL)animated {
-    const float alphaToSet = MIN(1, MAX(0, intensity));
-
-    [UIView animateWithDuration:animated ? 0.25 : 0 animations:^{
+- (void)setAllLampLevels:(float)intensity animated:(BOOL)animated {
+    const float glowLevel = MIN(1, MAX(0, intensity));
+    [UIView animateWithDuration:animated ? 0.1 : 0.0 animations:^{
         [self.lampViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            MEXLampView* oneLamp = (MEXLampView*)obj;
-            oneLamp.alpha = alphaToSet;            
+            [(MEXLampView*)obj setGlowLevel:glowLevel];
         }];
     }];
 }
