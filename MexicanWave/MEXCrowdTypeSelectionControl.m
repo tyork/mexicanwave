@@ -56,8 +56,8 @@
     UIButton* leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setBackgroundImage:[[UIImage imageNamed:@"button-l"] stretchableImageWithLeftCapWidth:39 topCapHeight:0] forState:UIControlStateNormal];
     [leftButton setImage:[UIImage imageNamed:@"icon-group"] forState:UIControlStateNormal];
-    [leftButton setTitle:@"Selected" forState:UIControlStateSelected];
-    [leftButton setTitle:@"Selected" forState:UIControlStateSelected|UIControlStateHighlighted];
+    [leftButton setTitle:@"Fun" forState:UIControlStateSelected];
+    [leftButton setTitle:@"Fun" forState:UIControlStateSelected|UIControlStateHighlighted];
     [leftButton setContentEdgeInsets:UIEdgeInsetsMake(0, 20.0f, 0, 5.0f)];
     [leftButton addTarget:self action:@selector(didTapSegment:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:leftButton];
@@ -68,8 +68,8 @@
     UIButton* middleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [middleButton setBackgroundImage:[UIImage imageNamed:@"button-m"] forState:UIControlStateNormal];
     [middleButton setImage:[UIImage imageNamed:@"icon-music"] forState:UIControlStateNormal];
-    [middleButton setTitle:@"Selected" forState:UIControlStateSelected];
-    [middleButton setTitle:@"Selected" forState:UIControlStateSelected|UIControlStateHighlighted];
+    [middleButton setTitle:@"Gig" forState:UIControlStateSelected];
+    [middleButton setTitle:@"Gig" forState:UIControlStateSelected|UIControlStateHighlighted];
     [middleButton addTarget:self action:@selector(didTapSegment:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:middleButton];
 
@@ -79,8 +79,8 @@
     UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightButton setBackgroundImage:[[UIImage imageNamed:@"button-r"] stretchableImageWithLeftCapWidth:1 topCapHeight:0] forState:UIControlStateNormal];
     [rightButton setImage:[UIImage imageNamed:@"icon-stadium"] forState:UIControlStateNormal];
-    [rightButton setTitle:@"Selected" forState:UIControlStateSelected|UIControlStateHighlighted];
-    [rightButton setTitle:@"Selected" forState:UIControlStateSelected];
+    [rightButton setTitle:@"Stadium" forState:UIControlStateSelected|UIControlStateHighlighted];
+    [rightButton setTitle:@"Stadium" forState:UIControlStateSelected];
     [rightButton setContentEdgeInsets:UIEdgeInsetsMake(0, 5.0f, 0, 20.0f)];
     [rightButton addTarget:self action:@selector(didTapSegment:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:rightButton];
