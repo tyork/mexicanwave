@@ -84,42 +84,18 @@
 
 #pragma mark - Notifications
 
-// Handles behaviour on wave trigger, i.e. wave has just passed our position
+// Handles behaviour on wave trigger, i.e. wave has just passed our bearing
 - (void)didWave:(NSNotification*)note {
     if(!self.isViewLoaded) {
         return;
     }
-    
     // Update the view
-    [self.waveView animateWithDuration:self.waveModel.wavePeriodInSeconds referenceAngle:[self.waveModel rootPeakAngleAtDate:[NSDate date]] numberOfPeaks:self.waveModel.numberOfPeaks];
+    [self.waveView animateWithDuration:self.waveModel.wavePeriodInSeconds referenceAngle:0 numberOfPeaks:self.waveModel.numberOfPeaks];
     
-    // Flash the torch
-    [self torchOn];
-}
-
-#pragma mark - Lamp configuration
-
-#define SIGN(x) ((x) < 0.0f ? -1.0f : 1.0f)
-
-- (CGPoint)positionOnProjectedCircleForAngle:(float)angle center:(CGPoint)center {
-    const float y = 132.0f*2.0f*(fabsf(angle) - 0.5f);
-    return CGPointMake(center.x + SIGN(angle)*sqrtf(132.0f*132.0f - y*y), center.y - y);
-}
-
-- (CGFloat)scaleFactorOnProjectedCircleForAngle:(float)fractionalAngle {
-    return (76.0f/128.0f) * (1.0f - fabsf(fractionalAngle)*0.86);    
-}
-
-- (void)configureLamps {
-    NSArray* angles = [NSArray arrayWithObjects:[NSNumber numberWithFloat:-0.995f],[NSNumber numberWithFloat:-0.98f],[NSNumber numberWithFloat:-0.945f],[NSNumber numberWithFloat:-0.896f],[NSNumber numberWithFloat:-0.815f],[NSNumber numberWithFloat:-0.68f],[NSNumber numberWithFloat:-0.48f],[NSNumber numberWithFloat:-0.24f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.24f],[NSNumber numberWithFloat:0.48f],[NSNumber numberWithFloat:0.68f],[NSNumber numberWithFloat:0.815f],[NSNumber numberWithFloat:0.896f],[NSNumber numberWithFloat:0.945f],[NSNumber numberWithFloat:0.98f],[NSNumber numberWithFloat:0.995f],[NSNumber numberWithFloat:1.0f],nil];
-    NSMutableArray* locations = [[NSMutableArray alloc] initWithCapacity:angles.count]; 
-    NSMutableArray* scaleFactors = [[NSMutableArray alloc] initWithCapacity:angles.count]; 
-    for(NSUInteger angleIndex = 0; angleIndex < angles.count; angleIndex++) {
-        const float angle = [[angles objectAtIndex:angleIndex] floatValue];
-        [locations addObject:[NSValue valueWithCGPoint:[self positionOnProjectedCircleForAngle:angle center:CGPointMake(158.0f, 155.0f)]]];
-        [scaleFactors addObject:[NSNumber numberWithFloat:[self scaleFactorOnProjectedCircleForAngle:angle]]];
+    if(note.object) {        
+        // Flash the torch
+        [self torchOn];
     }
-    [self.waveView configureLampsWithLocations:locations scaleFactors:scaleFactors];    
 }
 
 #pragma mark - Controller lifecycle
@@ -144,8 +120,6 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didWave:) name:MEXWaveModelDidWaveNotification object:nil];
     [self.calibrationModel addObserver:self forKeyPath:@"headingInDegreesEastOfNorth" options:NSKeyValueObservingOptionNew context:NULL];
-    
-    [self configureLamps];
     
     // Set crowd type on view from model
     self.crowdTypeSelectionControl.selectedSegment = (MEXCrowdTypeSelectionSegment)self.waveModel.crowdType;
@@ -174,7 +148,7 @@
 #pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    ///self.waveModel.deviceHeadingInDegreesEastOfNorth = self.calibrationModel.headingInDegreesEastOfNorth;
+    self.waveModel.deviceHeadingInDegreesEastOfNorth = self.calibrationModel.headingInDegreesEastOfNorth;
 }
 
 #pragma mark - Orientation

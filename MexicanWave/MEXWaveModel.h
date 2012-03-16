@@ -23,6 +23,5 @@ NSString* const MEXWaveModelDidWaveNotification;
 @property (nonatomic,readonly) NSTimeInterval wavePeriodInSeconds;
 
 - (NSUInteger)numberOfPeaks;
-- (float)rootPeakAngleAtDate:(NSDate*)date;
 
 @end

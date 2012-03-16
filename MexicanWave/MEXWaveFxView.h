@@ -12,8 +12,6 @@
 
 @property (nonatomic,retain,readonly) NSArray* lampViews;
 
-- (void)configureLampsWithLocations:(NSArray*)locations scaleFactors:(NSArray*)scaleFactors;
-
 - (void)animateWithDuration:(NSTimeInterval)duration referenceAngle:(float)referenceAngle numberOfPeaks:(NSUInteger)peaksPerCycle;
 
 @end

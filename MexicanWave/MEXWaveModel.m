@@ -14,7 +14,8 @@
 NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotification";
 
 @interface MEXWaveModel ()
-- (void)didWave;
+- (void)waveDidPassOurBearing;
+- (void)resetWave;
 - (void)cancelWave;
 - (void)scheduleWave;
 @end
@@ -26,16 +27,19 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
 - (void)setCrowdType:(MEXCrowdType)newValue {
     if(crowdType != newValue) {
         crowdType = newValue;
-        [self didWave];
+        [self resetWave];
+    }
+}
+
+- (void)setDeviceHeadingInDegreesEastOfNorth:(float)newHeading {
+    if(deviceHeadingInDegreesEastOfNorth != newHeading) {
+        deviceHeadingInDegreesEastOfNorth = newHeading;
+        [self resetWave];
     }
 }
 
 - (NSUInteger)numberOfPeaks {
     return (self.crowdType == kMEXCrowdTypeStageBased) ? 2 : 1;
-}
-
-- (float)rootPeakAngleAtDate:(NSDate*)date {
-    return 360.0f * (fmod([date timeIntervalSinceReferenceDate], self.wavePeriodInSeconds)/self.wavePeriodInSeconds);
 }
 
 - (NSTimeInterval)wavePeriodInSeconds {
@@ -62,13 +66,18 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
 
 #pragma mark - Waving
 
-- (void)didWave {
+- (void)resetWave {
     [self scheduleWave];
-    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:MEXWaveModelDidWaveNotification object:self]];
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:MEXWaveModelDidWaveNotification object:nil]];    
+}
+
+- (void)waveDidPassOurBearing {
+    [self scheduleWave];
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:MEXWaveModelDidWaveNotification object:[NSNumber numberWithBool:YES]]];
 }
 
 - (void)cancelWave {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(didWave) object:nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(waveDidPassOurBearing) object:nil];
 }
 
 - (void)scheduleWave {
@@ -87,7 +96,7 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
     NSDate* now = [NSDate date];
     const NSTimeInterval timeOffsetDueToAngle = self.deviceHeadingInDegreesEastOfNorth / 360.0 * self.wavePeriodInSeconds;
     const NSTimeInterval timeToNextWave = timeOffsetDueToAngle + self.wavePeriodInSeconds - fmod([now timeIntervalSinceReferenceDate], self.wavePeriodInSeconds);        
-    [self performSelector:@selector(didWave) withObject:nil afterDelay:timeToNextWave];
+    [self performSelector:@selector(waveDidPassOurBearing) withObject:nil afterDelay:timeToNextWave];
 }
      
 #pragma mark - Lifecycle
