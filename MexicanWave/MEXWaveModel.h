@@ -22,7 +22,7 @@ NSString* const MEXWaveModelDidWaveNotification;
 @property (nonatomic) float deviceHeadingInDegreesEastOfNorth;
 @property (nonatomic,readonly) NSTimeInterval wavePeriodInSeconds;
 
-- (NSUInteger)numberOfWaves;
-- (float)angleForWaveAtIndex:(NSUInteger)waveIndex date:(NSDate*)date;
+- (NSUInteger)numberOfPeaks;
+- (float)rootPeakAngleAtDate:(NSDate*)date;
 
 @end

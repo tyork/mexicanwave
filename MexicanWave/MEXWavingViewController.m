@@ -12,6 +12,10 @@
 #import "MEXWaveFxView.h"
 #import "MEXCrowdTypeSelectionControl.h"
 
+#import <AVFoundation/AVFoundation.h>
+
+#define kTorchOnTime 0.25f
+
 @implementation MEXWavingViewController
 
 @synthesize waveView;
@@ -52,14 +56,45 @@
     }
 }
 
-#pragma mark - Wave trigger
+#pragma mark - Torch handling
 
+- (void)torchOff {
+    AVCaptureDevice* backCamera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if([backCamera isTorchAvailable] && [backCamera torchMode] != AVCaptureTorchModeOff) {
+        if([backCamera lockForConfiguration:nil]) {
+            [backCamera setTorchMode:AVCaptureTorchModeOff];
+            [backCamera unlockForConfiguration];
+        }
+    }
+}
+
+- (void)torchOn {
+    AVCaptureDevice* backCamera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if([backCamera isTorchAvailable] && [backCamera isTorchModeSupported:AVCaptureTorchModeOn]) {
+        if([backCamera lockForConfiguration:nil]) {
+            [backCamera setTorchMode:AVCaptureTorchModeOn];
+            [backCamera unlockForConfiguration];
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, kTorchOnTime * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [self torchOff];
+            });
+        }
+    }
+}
+
+#pragma mark - Notifications
+
+// Handles behaviour on wave trigger, i.e. wave has just passed our position
 - (void)didWave:(NSNotification*)note {
     if(!self.isViewLoaded) {
         return;
     }
     
-    [self.waveView animateWithDuration:self.waveModel.wavePeriodInSeconds referenceAngle:[self.waveModel angleForWaveAtIndex:0 date:[NSDate date]] numberOfPeaks:self.waveModel.numberOfWaves];
+    // Update the view
+    [self.waveView animateWithDuration:self.waveModel.wavePeriodInSeconds referenceAngle:[self.waveModel rootPeakAngleAtDate:[NSDate date]] numberOfPeaks:self.waveModel.numberOfPeaks];
+    
+    // Flash the torch
+    [self torchOn];
 }
 
 #pragma mark - Lamp configuration
@@ -122,6 +157,7 @@
     self.crowdTypeSelectionControl = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
     [self.calibrationModel stopCalibrating];
+    [self torchOff];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -132,6 +168,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.calibrationModel stopCalibrating];
+    [self torchOff];
 }
 
 #pragma mark - KVO

@@ -23,12 +23,19 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
 
 @synthesize crowdType, deviceHeadingInDegreesEastOfNorth;
 
-- (NSUInteger)numberOfWaves {
+- (void)setCrowdType:(MEXCrowdType)newValue {
+    if(crowdType != newValue) {
+        crowdType = newValue;
+        [self didWave];
+    }
+}
+
+- (NSUInteger)numberOfPeaks {
     return (self.crowdType == kMEXCrowdTypeStageBased) ? 2 : 1;
 }
 
-- (float)angleForWaveAtIndex:(NSUInteger)waveIndex date:(NSDate*)date {    
-    return 360.0f * (fmod([date timeIntervalSinceReferenceDate], self.wavePeriodInSeconds)/self.wavePeriodInSeconds + ((float)waveIndex/(float)[self numberOfWaves]));
+- (float)rootPeakAngleAtDate:(NSDate*)date {
+    return 360.0f * (fmod([date timeIntervalSinceReferenceDate], self.wavePeriodInSeconds)/self.wavePeriodInSeconds);
 }
 
 - (NSTimeInterval)wavePeriodInSeconds {
