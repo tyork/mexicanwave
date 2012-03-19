@@ -11,7 +11,9 @@
 @interface MEXLampView : UIView
 
 
-@property (nonatomic) float glowFraction;
 @property (nonatomic) float bulbScale;
+
+- (void)animateGlowWithCycleTime:(NSTimeInterval)cycleTime activeTime:(NSTimeInterval)activeTime phase:(float)phase;
+- (void)cancelGlowAnimation;
 
 @end

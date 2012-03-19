@@ -7,28 +7,45 @@
 //
 
 #import "MEXLampView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation MEXLampView
 
-@synthesize glowFraction, bulbScale;
+@synthesize bulbScale;
 
-- (void)setGlowFraction:(float)newFraction {
-    NSAssert(self.subviews.count == 2, @"Bulb view or glow view or both not present in a lamp");
-    glowFraction = newFraction;
-    UIView* glowView = [self.subviews objectAtIndex:1];
-    glowView.alpha = MIN(1, MAX(glowFraction, 0));
+- (void)animateGlowWithCycleTime:(NSTimeInterval)cycleTime activeTime:(NSTimeInterval)activeTime phase:(float)phase {
+    // TODO: smoothly continue
+    [self cancelGlowAnimation];
+    
+    CAKeyframeAnimation* opacityAnim = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
+    opacityAnim.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0],[NSNumber numberWithFloat:1],[NSNumber numberWithFloat:0],nil];
+    opacityAnim.keyTimes = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.5*(1.0-activeTime)],[NSNumber numberWithFloat:0.5],[NSNumber numberWithFloat:0.5*(1.0+activeTime)],nil];
+    opacityAnim.speed = 1.0/cycleTime;
+    opacityAnim.duration = 1.0;
+    opacityAnim.timeOffset = phase - 0.5;
+    opacityAnim.repeatCount = HUGE_VALF;    // Repeat forever
+    
+    [self.layer addAnimation:opacityAnim forKey:@"glow"];
 }
+
+- (void)cancelGlowAnimation {
+    [self.layer removeAnimationForKey:@"glow"];
+}
+
 
 - (void)setBulbScale:(float)newScale {
     NSAssert(self.subviews.count == 2, @"Bulb view or glow view or both not present in a lamp");
     bulbScale = newScale;
     UIView* bulbView = [self.subviews objectAtIndex:0];
-    const CGFloat affineScale = MIN(1, MAX(newScale, 0));
+    const CGFloat affineScale = MIN(1, MAX(bulbScale, 0));
     bulbView.transform = CGAffineTransformMakeScale(affineScale, affineScale);
+    UIView* glowView = [self.subviews objectAtIndex:1];
+    glowView.transform = CGAffineTransformMakeScale(affineScale, affineScale);
 }
 
+#pragma mark - Lifecycle
+
 - (void)commonInitialization {
-    glowFraction = 1.0f;
     bulbScale = 1.0f;
     
     self.backgroundColor = [UIColor clearColor];
@@ -60,6 +77,8 @@
     [self commonInitialization];    
     return self;
 }
+
+#pragma mark - UIView
 
 - (CGSize)sizeThatFits:(CGSize)size {
     NSAssert(self.subviews.count == 2, @"Bulb view or glow view or both not present in a lamp");

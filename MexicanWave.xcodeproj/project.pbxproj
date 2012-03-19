@@ -32,6 +32,7 @@
 		1903F3C91510EC2800807542 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903F3BF1510EC2800807542 /* background.png */; };
 		1903F3CD1510F23A00807542 /* MEXWaveFxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1903F3CC1510F23A00807542 /* MEXWaveFxView.m */; };
 		1903F3D01510F50C00807542 /* MEXLampView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1903F3CF1510F50B00807542 /* MEXLampView.m */; };
+		1903F3D8151236BB00807542 /* MEXCrowdTypeSelectionControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1903F3D7151236B900807542 /* MEXCrowdTypeSelectionControl.m */; };
 		199CB60514FEA3CA00A16A97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60414FEA3CA00A16A97 /* UIKit.framework */; };
 		199CB60714FEA3CA00A16A97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60614FEA3CA00A16A97 /* Foundation.framework */; };
 		199CB60914FEA3CA00A16A97 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60814FEA3CA00A16A97 /* CoreGraphics.framework */; };
@@ -42,6 +43,10 @@
 		199CB63214FEAAC000A16A97 /* MEXWaveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB63114FEAABF00A16A97 /* MEXWaveModel.m */; };
 		199CB63514FF84DE00A16A97 /* MEXCalibrationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB63414FF84DD00A16A97 /* MEXCalibrationModel.m */; };
 		199CB63E14FF8FF700A16A97 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB63D14FF8FF700A16A97 /* CoreLocation.framework */; };
+		E254CA211513400400DAB66E /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E254CA1F1513400400DAB66E /* AppIcon.png */; };
+		E254CA221513400400DAB66E /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E254CA201513400400DAB66E /* AppIcon@2x.png */; };
+		E254CA241513995100DAB66E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E254CA231513995100DAB66E /* QuartzCore.framework */; };
+		E254CA261513A49400DAB66E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E254CA251513A49400DAB66E /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +77,8 @@
 		1903F3CC1510F23A00807542 /* MEXWaveFxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXWaveFxView.m; sourceTree = "<group>"; };
 		1903F3CE1510F50A00807542 /* MEXLampView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXLampView.h; sourceTree = "<group>"; };
 		1903F3CF1510F50B00807542 /* MEXLampView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXLampView.m; sourceTree = "<group>"; };
+		1903F3D6151236B800807542 /* MEXCrowdTypeSelectionControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXCrowdTypeSelectionControl.h; sourceTree = "<group>"; };
+		1903F3D7151236B900807542 /* MEXCrowdTypeSelectionControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXCrowdTypeSelectionControl.m; sourceTree = "<group>"; };
 		199CB60014FEA3CA00A16A97 /* MexicanWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MexicanWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		199CB60414FEA3CA00A16A97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		199CB60614FEA3CA00A16A97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -89,6 +96,10 @@
 		199CB63314FF84DC00A16A97 /* MEXCalibrationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXCalibrationModel.h; sourceTree = "<group>"; };
 		199CB63414FF84DD00A16A97 /* MEXCalibrationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXCalibrationModel.m; sourceTree = "<group>"; };
 		199CB63D14FF8FF700A16A97 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E254CA1F1513400400DAB66E /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
+		E254CA201513400400DAB66E /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
+		E254CA231513995100DAB66E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E254CA251513A49400DAB66E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +107,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E254CA261513A49400DAB66E /* AVFoundation.framework in Frameworks */,
+				E254CA241513995100DAB66E /* QuartzCore.framework in Frameworks */,
 				199CB63E14FF8FF700A16A97 /* CoreLocation.framework in Frameworks */,
 				199CB60514FEA3CA00A16A97 /* UIKit.framework in Frameworks */,
 				199CB60714FEA3CA00A16A97 /* Foundation.framework in Frameworks */,
@@ -129,6 +142,8 @@
 		1903F3891510E64A00807542 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E254CA1F1513400400DAB66E /* AppIcon.png */,
+				E254CA201513400400DAB66E /* AppIcon@2x.png */,
 				1903F3B61510EC2200807542 /* light-blob.png */,
 				1903F3B71510EC2200807542 /* icon-stadium.png */,
 				1903F3B81510EC2300807542 /* icon-music.png */,
@@ -175,6 +190,8 @@
 		199CB60314FEA3CA00A16A97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E254CA251513A49400DAB66E /* AVFoundation.framework */,
+				E254CA231513995100DAB66E /* QuartzCore.framework */,
 				199CB63D14FF8FF700A16A97 /* CoreLocation.framework */,
 				199CB60414FEA3CA00A16A97 /* UIKit.framework */,
 				199CB60614FEA3CA00A16A97 /* Foundation.framework */,
@@ -226,6 +243,8 @@
 				1903F3CC1510F23A00807542 /* MEXWaveFxView.m */,
 				1903F3CE1510F50A00807542 /* MEXLampView.h */,
 				1903F3CF1510F50B00807542 /* MEXLampView.m */,
+				1903F3D6151236B800807542 /* MEXCrowdTypeSelectionControl.h */,
+				1903F3D7151236B900807542 /* MEXCrowdTypeSelectionControl.m */,
 			);
 			name = Waving;
 			sourceTree = "<group>";
@@ -305,6 +324,8 @@
 				1903F3C71510EC2800807542 /* button-m.png in Resources */,
 				1903F3C81510EC2800807542 /* button-l.png in Resources */,
 				1903F3C91510EC2800807542 /* background.png in Resources */,
+				E254CA211513400400DAB66E /* AppIcon.png in Resources */,
+				E254CA221513400400DAB66E /* AppIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +343,7 @@
 				199CB63514FF84DE00A16A97 /* MEXCalibrationModel.m in Sources */,
 				1903F3CD1510F23A00807542 /* MEXWaveFxView.m in Sources */,
 				1903F3D01510F50C00807542 /* MEXLampView.m in Sources */,
+				1903F3D8151236BB00807542 /* MEXCrowdTypeSelectionControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +434,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MexicanWave/MexicanWave-Prefix.pch";
 				INFOPLIST_FILE = "MexicanWave/MexicanWave-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -421,14 +443,49 @@
 		199CB62014FEA3CA00A16A97 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MexicanWave/MexicanWave-Prefix.pch";
 				INFOPLIST_FILE = "MexicanWave/MexicanWave-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
+		};
+		E254CA1C151338DE00DAB66E /* InHouseDistribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = InHouseDistribution;
+		};
+		E254CA1D151338DE00DAB66E /* InHouseDistribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MexicanWave/MexicanWave-Prefix.pch";
+				INFOPLIST_FILE = "MexicanWave/MexicanWave-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = InHouseDistribution;
 		};
 /* End XCBuildConfiguration section */
 
@@ -438,6 +495,7 @@
 			buildConfigurations = (
 				199CB61C14FEA3CA00A16A97 /* Debug */,
 				199CB61D14FEA3CA00A16A97 /* Release */,
+				E254CA1C151338DE00DAB66E /* InHouseDistribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -447,6 +505,7 @@
 			buildConfigurations = (
 				199CB61F14FEA3CA00A16A97 /* Debug */,
 				199CB62014FEA3CA00A16A97 /* Release */,
+				E254CA1D151338DE00DAB66E /* InHouseDistribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

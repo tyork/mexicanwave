@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class MEXCrowdTypeSelectionControl;
 @class MEXWaveFxView;
 @class MEXWaveModel, MEXCalibrationModel;
 
@@ -17,11 +18,8 @@
 @property (nonatomic,retain) MEXCalibrationModel* calibrationModel;
 
 @property (nonatomic,retain) IBOutlet MEXWaveFxView* waveView;
+@property (nonatomic,retain) IBOutlet MEXCrowdTypeSelectionControl* crowdTypeSelectionControl;
 
-- (IBAction)didTapSmallAudienceButton:(id)sender;
-- (IBAction)didTapGigButton:(id)sender;
-- (IBAction)didTapStadiumButton:(id)sender;
-
-- (IBAction)didTapCalibrationButton:(id)sender;
+- (IBAction)didChangeCrowdType:(id)sender;
 
 @end

@@ -9,7 +9,10 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFiles</key>
-	<array/>
+	<array>
+		<string>AppIcon.png</string>
+		<string>AppIcon@2x.png</string>
+	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.yell.yelllabs.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
