@@ -19,9 +19,8 @@ NSString* const MEXWaveModelDidWaveNotification;
 @interface MEXWaveModel : NSObject
 
 @property (nonatomic) MEXCrowdType crowdType;
-@property (nonatomic) float deviceHeadingInDegreesEastOfNorth;
 @property (nonatomic,readonly) NSTimeInterval wavePeriodInSeconds;
-
-- (NSUInteger)numberOfPeaks;
+@property (nonatomic,readonly) NSUInteger numberOfPeaks;
+@property (nonatomic,readonly) float wavePhase;
 
 @end

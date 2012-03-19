@@ -190,6 +190,19 @@
 			path = MexicanWave/Images;
 			sourceTree = "<group>";
 		};
+		1903F3E11517717800807542 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1903F3CB1510F23900807542 /* MEXWaveFxView.h */,
+				1903F3CC1510F23A00807542 /* MEXWaveFxView.m */,
+				1903F3CE1510F50A00807542 /* MEXLampView.h */,
+				1903F3CF1510F50B00807542 /* MEXLampView.m */,
+				1903F3D6151236B800807542 /* MEXCrowdTypeSelectionControl.h */,
+				1903F3D7151236B900807542 /* MEXCrowdTypeSelectionControl.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		199CB5F514FEA3CA00A16A97 = {
 			isa = PBXGroup;
 			children = (
@@ -226,8 +239,6 @@
 			children = (
 				199CB61314FEA3CA00A16A97 /* MEXAppDelegate.h */,
 				199CB61414FEA3CA00A16A97 /* MEXAppDelegate.m */,
-				199CB63014FEAABE00A16A97 /* MEXWaveModel.h */,
-				199CB63114FEAABF00A16A97 /* MEXWaveModel.m */,
 				199CB63814FF851C00A16A97 /* Waving */,
 				199CB63714FF850400A16A97 /* Compass */,
 				199CB60B14FEA3CA00A16A97 /* Supporting Files */,
@@ -258,14 +269,11 @@
 		199CB63814FF851C00A16A97 /* Waving */ = {
 			isa = PBXGroup;
 			children = (
+				1903F3E11517717800807542 /* Views */,
+				199CB63014FEAABE00A16A97 /* MEXWaveModel.h */,
+				199CB63114FEAABF00A16A97 /* MEXWaveModel.m */,
 				199CB62914FEA47B00A16A97 /* MEXWavingViewController.h */,
 				199CB62A14FEA47C00A16A97 /* MEXWavingViewController.m */,
-				1903F3CB1510F23900807542 /* MEXWaveFxView.h */,
-				1903F3CC1510F23A00807542 /* MEXWaveFxView.m */,
-				1903F3CE1510F50A00807542 /* MEXLampView.h */,
-				1903F3CF1510F50B00807542 /* MEXLampView.m */,
-				1903F3D6151236B800807542 /* MEXCrowdTypeSelectionControl.h */,
-				1903F3D7151236B900807542 /* MEXCrowdTypeSelectionControl.m */,
 			);
 			name = Waving;
 			sourceTree = "<group>";

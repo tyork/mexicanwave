@@ -8,7 +8,6 @@
 
 #import "MEXWavingViewController.h"
 #import "MEXWaveModel.h"
-#import "MEXCompassModel.h"
 #import "MEXWaveFxView.h"
 #import "MEXCrowdTypeSelectionControl.h"
 
@@ -16,24 +15,24 @@
 
 #define kTorchOnTime 0.25f
 
+#define kModelKeyPathForPeriod @"wavePeriodInSeconds"
+#define kModelKeyPathForPhase @"wavePhase"
+#define kModelKeyPathForPeaks @"numberOfPeaks"
+
 @implementation MEXWavingViewController
 
 @synthesize waveView;
 @synthesize crowdTypeSelectionControl;
-@synthesize waveModel, calibrationModel;
+@synthesize waveModel;
 
 - (MEXWaveModel*)waveModel {
     if(!waveModel) {
         waveModel = [[MEXWaveModel alloc] init];
+        [waveModel addObserver:self forKeyPath:kModelKeyPathForPhase options:NSKeyValueObservingOptionNew context:NULL];
+        [waveModel addObserver:self forKeyPath:kModelKeyPathForPeriod options:NSKeyValueObservingOptionNew context:NULL];
+        [waveModel addObserver:self forKeyPath:kModelKeyPathForPeaks options:NSKeyValueObservingOptionNew context:NULL];
     }
     return waveModel;
-}
-
-- (MEXCompassModel*)calibrationModel {
-    if(!calibrationModel) {
-        calibrationModel = [[MEXCompassModel alloc] init];
-    }
-    return calibrationModel;
 }
 
 #pragma mark - UI actions
@@ -89,13 +88,9 @@
     if(!self.isViewLoaded) {
         return;
     }
-    // Update the view
-    [self.waveView animateWithDuration:self.waveModel.wavePeriodInSeconds referenceAngle:0 numberOfPeaks:self.waveModel.numberOfPeaks];
     
-    if(note.object) {        
-        // Flash the torch
-        [self torchOn];
-    }
+    // Flash the torch
+    [self torchOn];
 }
 
 #pragma mark - Controller lifecycle
@@ -106,8 +101,9 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
-    [calibrationModel removeObserver:self forKeyPath:MEXWaveModelDidWaveNotification];
-    [calibrationModel release];
+    [waveModel removeObserver:self forKeyPath:kModelKeyPathForPhase];
+    [waveModel removeObserver:self forKeyPath:kModelKeyPathForPeriod];
+    [waveModel removeObserver:self forKeyPath:kModelKeyPathForPeaks];
     [waveModel release];
     [waveView release];
     [crowdTypeSelectionControl release];
@@ -119,7 +115,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didWave:) name:MEXWaveModelDidWaveNotification object:nil];
-    [self.calibrationModel addObserver:self forKeyPath:@"headingInDegreesEastOfNorth" options:NSKeyValueObservingOptionNew context:NULL];
     
     // Set crowd type on view from model
     self.crowdTypeSelectionControl.selectedSegment = (MEXCrowdTypeSelectionSegment)self.waveModel.crowdType;
@@ -127,28 +122,32 @@
  
 - (void)viewDidUnload {
     [super viewDidUnload];
+    [self torchOff];
     self.waveView = nil;
     self.crowdTypeSelectionControl = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
-    [self.calibrationModel stopCompass];
-    [self torchOff];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.calibrationModel startCompass];  
+    // TODO: start waving
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.calibrationModel stopCompass];
     [self torchOff];
 }
 
 #pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    self.waveModel.deviceHeadingInDegreesEastOfNorth = self.calibrationModel.headingInDegreesEastOfNorth;
+    if(object != self.waveModel) {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+        return;
+    }
+    
+    // A wave period change or angle change means we need to update the display.
+    [self.waveView animateWithDuration:self.waveModel.wavePeriodInSeconds startingPhase:self.waveModel.wavePhase numberOfPeaks:self.waveModel.numberOfPeaks];
 }
 
 #pragma mark - Orientation

@@ -79,13 +79,12 @@
 
 }
 
-
-- (void)animateWithDuration:(NSTimeInterval)duration referenceAngle:(float)referenceAngle numberOfPeaks:(NSUInteger)peaksPerCycle {
+- (void)animateWithDuration:(NSTimeInterval)duration startingPhase:(float)startingPhase numberOfPeaks:(NSUInteger)peaksPerCycle {
 
     const NSUInteger numberOfLamps = self.lampViews.count;
     [self.lampViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         MEXLampView* oneLamp = (MEXLampView*)obj;
-        const float phase = (float)(idx * peaksPerCycle) / (float)numberOfLamps + referenceAngle/360.0f;        
+        const float phase = (float)(idx * peaksPerCycle) / (float)numberOfLamps + startingPhase;        
         [oneLamp animateGlowWithCycleTime:duration activeTime:kActiveTime/(NSTimeInterval)peaksPerCycle phase:phase];
     }];
 }

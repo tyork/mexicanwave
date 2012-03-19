@@ -7,6 +7,7 @@
 //
 
 #import "MEXWaveModel.h"
+#import "MEXCompassModel.h"
 
 #define MIN_WAVE_PERIOD 0.5
 #define MAX_WAVE_PERIOD 10.0
@@ -14,28 +15,29 @@
 NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotification";
 
 @interface MEXWaveModel ()
+@property (nonatomic,retain) MEXCompassModel* compassModel;
+
+
 - (void)waveDidPassOurBearing;
-- (void)resetWave;
 - (void)cancelWave;
 - (void)scheduleWave;
 @end
 
 @implementation MEXWaveModel
 
-@synthesize crowdType, deviceHeadingInDegreesEastOfNorth;
+@synthesize crowdType;
+@synthesize compassModel;
 
-- (void)setCrowdType:(MEXCrowdType)newValue {
-    if(crowdType != newValue) {
-        crowdType = newValue;
-        [self resetWave];
-    }
++ (NSSet*)keyPathsForValuesAffectingNumberOfPeaks {
+    return [NSSet setWithObject:@"crowdType"];
 }
 
-- (void)setDeviceHeadingInDegreesEastOfNorth:(float)newHeading {
-    if(deviceHeadingInDegreesEastOfNorth != newHeading) {
-        deviceHeadingInDegreesEastOfNorth = newHeading;
-        [self resetWave];
-    }
++ (NSSet*)keyPathsForValuesAffectingWavePeriodInSeconds {
+    return [NSSet setWithObject:@"crowdType"];
+}
+
++ (NSSet*)keyPathsForValuesAffectingWavePhase {
+    return [NSSet setWithObjects:@"compassModel.headingInDegreesEastOfNorth",@"crowdType",nil];
 }
 
 - (NSUInteger)numberOfPeaks {
@@ -64,12 +66,24 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
     return MIN_WAVE_PERIOD + (MAX_WAVE_PERIOD - MIN_WAVE_PERIOD) * crowdSizeFactor;
 }
 
-#pragma mark - Waving
-
-- (void)resetWave {
-    [self scheduleWave];
-    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:MEXWaveModelDidWaveNotification object:nil]];    
+- (float)wavePhase {
+    if(self.wavePeriodInSeconds <= 0.0f) {
+        return 0.0f;
+    }
+    
+    return ((float)fmod([[NSDate date] timeIntervalSinceReferenceDate] + (self.compassModel.headingInDegreesEastOfNorth / 360.0)*self.wavePeriodInSeconds, self.wavePeriodInSeconds))/self.wavePeriodInSeconds;
 }
+
+- (void)setCrowdType:(MEXCrowdType)newValue {
+    if(crowdType != newValue) {
+        [self willChangeValueForKey:@"crowdType"];
+        crowdType = newValue;
+        [self didChangeValueForKey:@"crowdType"];
+        [self scheduleWave];
+    }
+}
+
+#pragma mark - Waving
 
 - (void)waveDidPassOurBearing {
     [self scheduleWave];
@@ -92,11 +106,18 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
     if([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
         return;
     }
-
-    NSDate* now = [NSDate date];
-    const NSTimeInterval timeOffsetDueToAngle = self.deviceHeadingInDegreesEastOfNorth / 360.0 * self.wavePeriodInSeconds;
-    const NSTimeInterval timeToNextWave = timeOffsetDueToAngle + self.wavePeriodInSeconds - fmod([now timeIntervalSinceReferenceDate], self.wavePeriodInSeconds);        
+    const float timeToNextWave = self.wavePeriodInSeconds * (1.0f - self.wavePhase);
     [self performSelector:@selector(waveDidPassOurBearing) withObject:nil afterDelay:timeToNextWave];
+}
+
+- (void)didChangeActivityState {
+    if([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
+        [self.compassModel stopCompass];
+    }
+    else {
+        [self.compassModel startCompass];
+        [self scheduleWave];
+    }
 }
      
 #pragma mark - Lifecycle
@@ -106,11 +127,12 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
         return nil;
     }
     crowdType = kMEXCrowdTypeStageBased;
-    
+    compassModel = [[MEXCompassModel alloc] init];
+        
     NSNotificationCenter* noteCenter = [NSNotificationCenter defaultCenter];
     [noteCenter addObserver:self selector:@selector(scheduleWave) name:UIApplicationSignificantTimeChangeNotification object:nil];
-    [noteCenter addObserver:self selector:@selector(scheduleWave) name:UIApplicationDidBecomeActiveNotification object:nil];
-    [noteCenter addObserver:self selector:@selector(scheduleWave) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [noteCenter addObserver:self selector:@selector(didChangeActivityState) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [noteCenter addObserver:self selector:@selector(didChangeActivityState) name:UIApplicationDidEnterBackgroundNotification object:nil];
     
     [self scheduleWave];
     return self;
@@ -119,6 +141,7 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self cancelWave];
+    [compassModel release];
     [super dealloc];
 }
 

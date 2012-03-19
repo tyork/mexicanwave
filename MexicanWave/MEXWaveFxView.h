@@ -12,6 +12,6 @@
 
 @property (nonatomic,retain,readonly) NSArray* lampViews;
 
-- (void)animateWithDuration:(NSTimeInterval)duration referenceAngle:(float)referenceAngle numberOfPeaks:(NSUInteger)peaksPerCycle;
+- (void)animateWithDuration:(NSTimeInterval)duration startingPhase:(float)referenceAngle numberOfPeaks:(NSUInteger)peaksPerCycle;
 
 @end
