@@ -10,12 +10,12 @@
 
 @class MEXCrowdTypeSelectionControl;
 @class MEXWaveFxView;
-@class MEXWaveModel, MEXCalibrationModel;
+@class MEXWaveModel, MEXCompassModel;
 
 @interface MEXWavingViewController : UIViewController
 
 @property (nonatomic,retain) MEXWaveModel* waveModel;
-@property (nonatomic,retain) MEXCalibrationModel* calibrationModel;
+@property (nonatomic,retain) MEXCompassModel* calibrationModel;
 
 @property (nonatomic,retain) IBOutlet MEXWaveFxView* waveView;
 @property (nonatomic,retain) IBOutlet MEXCrowdTypeSelectionControl* crowdTypeSelectionControl;

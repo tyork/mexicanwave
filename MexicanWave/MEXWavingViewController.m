@@ -8,7 +8,7 @@
 
 #import "MEXWavingViewController.h"
 #import "MEXWaveModel.h"
-#import "MEXCalibrationModel.h"
+#import "MEXCompassModel.h"
 #import "MEXWaveFxView.h"
 #import "MEXCrowdTypeSelectionControl.h"
 
@@ -29,9 +29,9 @@
     return waveModel;
 }
 
-- (MEXCalibrationModel*)calibrationModel {
+- (MEXCompassModel*)calibrationModel {
     if(!calibrationModel) {
-        calibrationModel = [[MEXCalibrationModel alloc] init];
+        calibrationModel = [[MEXCompassModel alloc] init];
     }
     return calibrationModel;
 }
@@ -130,18 +130,18 @@
     self.waveView = nil;
     self.crowdTypeSelectionControl = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
-    [self.calibrationModel stopCalibrating];
+    [self.calibrationModel stopCompass];
     [self torchOff];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.calibrationModel startCalibrating];  
+    [self.calibrationModel startCompass];  
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.calibrationModel stopCalibrating];
+    [self.calibrationModel stopCompass];
     [self torchOff];
 }
 

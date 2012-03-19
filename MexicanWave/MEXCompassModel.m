@@ -6,25 +6,25 @@
 //  Copyright (c) 2012 Yell Group Plc. All rights reserved.
 //
 
-#import "MEXCalibrationModel.h"
+#import "MEXCompassModel.h"
 
 #define kMinimumHeadingDelta 10.0f
 
-@interface MEXCalibrationModel ()
+@interface MEXCompassModel ()
 @property (nonatomic,retain) CLLocationManager* locationManager;
 @property (nonatomic,readwrite) float headingInDegreesEastOfNorth;
 @end
 
-@implementation MEXCalibrationModel
+@implementation MEXCompassModel
 
 @synthesize headingInDegreesEastOfNorth;
 @synthesize locationManager;
 
-- (void)startCalibrating {
+- (void)startCompass {
     [self.locationManager startUpdatingHeading];    
 }
 
-- (void)stopCalibrating {
+- (void)stopCompass {
     [self.locationManager stopUpdatingHeading];
 }
 

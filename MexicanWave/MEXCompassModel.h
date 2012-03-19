@@ -12,11 +12,11 @@
 typedef void(^MEXCalibrationCompletionBlock)(float calibratedheadingInDegrees, NSError* error);
 
 
-@interface MEXCalibrationModel : NSObject <CLLocationManagerDelegate>
+@interface MEXCompassModel : NSObject <CLLocationManagerDelegate>
 
 @property (nonatomic,readonly) float headingInDegreesEastOfNorth;       // KVO this to get dynamic updates
 
 // Right now we don't allow clients to specify an error limit, just a timeout
-- (void)startCalibrating;
-- (void)stopCalibrating;
+- (void)startCompass;
+- (void)stopCompass;
 @end

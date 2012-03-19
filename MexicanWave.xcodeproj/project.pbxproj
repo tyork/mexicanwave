@@ -41,7 +41,7 @@
 		199CB61514FEA3CA00A16A97 /* MEXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB61414FEA3CA00A16A97 /* MEXAppDelegate.m */; };
 		199CB62C14FEA47C00A16A97 /* MEXWavingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB62A14FEA47C00A16A97 /* MEXWavingViewController.m */; };
 		199CB63214FEAAC000A16A97 /* MEXWaveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB63114FEAABF00A16A97 /* MEXWaveModel.m */; };
-		199CB63514FF84DE00A16A97 /* MEXCalibrationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB63414FF84DD00A16A97 /* MEXCalibrationModel.m */; };
+		199CB63514FF84DE00A16A97 /* MEXCompassModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB63414FF84DD00A16A97 /* MEXCompassModel.m */; };
 		199CB63E14FF8FF700A16A97 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB63D14FF8FF700A16A97 /* CoreLocation.framework */; };
 		CEE46C5E1517416500B1D48F /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE46C571517416500B1D48F /* Icon-72.png */; };
 		CEE46C5F1517416500B1D48F /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE46C581517416500B1D48F /* Icon-Small-50.png */; };
@@ -100,8 +100,8 @@
 		199CB62A14FEA47C00A16A97 /* MEXWavingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXWavingViewController.m; sourceTree = "<group>"; };
 		199CB63014FEAABE00A16A97 /* MEXWaveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXWaveModel.h; sourceTree = "<group>"; };
 		199CB63114FEAABF00A16A97 /* MEXWaveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXWaveModel.m; sourceTree = "<group>"; };
-		199CB63314FF84DC00A16A97 /* MEXCalibrationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXCalibrationModel.h; sourceTree = "<group>"; };
-		199CB63414FF84DD00A16A97 /* MEXCalibrationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXCalibrationModel.m; sourceTree = "<group>"; };
+		199CB63314FF84DC00A16A97 /* MEXCompassModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXCompassModel.h; sourceTree = "<group>"; };
+		199CB63414FF84DD00A16A97 /* MEXCompassModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXCompassModel.m; sourceTree = "<group>"; };
 		199CB63D14FF8FF700A16A97 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CEE46C571517416500B1D48F /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "MexicanWave/Resources/Icon-72.png"; sourceTree = "<group>"; };
 		CEE46C581517416500B1D48F /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "MexicanWave/Resources/Icon-Small-50.png"; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 				199CB63014FEAABE00A16A97 /* MEXWaveModel.h */,
 				199CB63114FEAABF00A16A97 /* MEXWaveModel.m */,
 				199CB63814FF851C00A16A97 /* Waving */,
-				199CB63714FF850400A16A97 /* Calibration */,
+				199CB63714FF850400A16A97 /* Compass */,
 				199CB60B14FEA3CA00A16A97 /* Supporting Files */,
 			);
 			path = MexicanWave;
@@ -246,13 +246,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		199CB63714FF850400A16A97 /* Calibration */ = {
+		199CB63714FF850400A16A97 /* Compass */ = {
 			isa = PBXGroup;
 			children = (
-				199CB63314FF84DC00A16A97 /* MEXCalibrationModel.h */,
-				199CB63414FF84DD00A16A97 /* MEXCalibrationModel.m */,
+				199CB63314FF84DC00A16A97 /* MEXCompassModel.h */,
+				199CB63414FF84DD00A16A97 /* MEXCompassModel.m */,
 			);
-			name = Calibration;
+			name = Compass;
 			sourceTree = "<group>";
 		};
 		199CB63814FF851C00A16A97 /* Waving */ = {
@@ -368,7 +368,7 @@
 				199CB61514FEA3CA00A16A97 /* MEXAppDelegate.m in Sources */,
 				199CB62C14FEA47C00A16A97 /* MEXWavingViewController.m in Sources */,
 				199CB63214FEAAC000A16A97 /* MEXWaveModel.m in Sources */,
-				199CB63514FF84DE00A16A97 /* MEXCalibrationModel.m in Sources */,
+				199CB63514FF84DE00A16A97 /* MEXCompassModel.m in Sources */,
 				1903F3CD1510F23A00807542 /* MEXWaveFxView.m in Sources */,
 				1903F3D01510F50C00807542 /* MEXLampView.m in Sources */,
 				1903F3D8151236BB00807542 /* MEXCrowdTypeSelectionControl.m in Sources */,
