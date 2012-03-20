@@ -37,7 +37,10 @@
 		196B8E2A1517B58700DAD14A /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 196B8E0E1517B58700DAD14A /* iTunesArtwork.png */; };
 		196B8E2B1517B58700DAD14A /* light-blob.png in Resources */ = {isa = PBXBuildFile; fileRef = 196B8E0F1517B58700DAD14A /* light-blob.png */; };
 		196B8E2C1517B58700DAD14A /* light-blob@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196B8E101517B58700DAD14A /* light-blob@2x.png */; };
-		196B8E2D1517B58700DAD14A /* scale_down_assets.bash in Resources */ = {isa = PBXBuildFile; fileRef = 196B8E111517B58700DAD14A /* scale_down_assets.bash */; };
+		196B8E331518937400DAD14A /* MEXSegmentButtonControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 196B8E321518937400DAD14A /* MEXSegmentButtonControl.m */; };
+		196B8E4B1518A00100DAD14A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 196B8E451518A00100DAD14A /* InfoPlist.strings */; };
+		196B8E4C1518A00100DAD14A /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196B8E471518A00100DAD14A /* MainWindow.xib */; };
+		196B8E4D1518A00100DAD14A /* MEXWavingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196B8E491518A00100DAD14A /* MEXWavingViewController.xib */; };
 		199CB60514FEA3CA00A16A97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60414FEA3CA00A16A97 /* UIKit.framework */; };
 		199CB60714FEA3CA00A16A97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60614FEA3CA00A16A97 /* Foundation.framework */; };
 		199CB60914FEA3CA00A16A97 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60814FEA3CA00A16A97 /* CoreGraphics.framework */; };
@@ -86,7 +89,11 @@
 		196B8E0E1517B58700DAD14A /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		196B8E0F1517B58700DAD14A /* light-blob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-blob.png"; sourceTree = "<group>"; };
 		196B8E101517B58700DAD14A /* light-blob@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-blob@2x.png"; sourceTree = "<group>"; };
-		196B8E111517B58700DAD14A /* scale_down_assets.bash */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = scale_down_assets.bash; sourceTree = "<group>"; };
+		196B8E311518937400DAD14A /* MEXSegmentButtonControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXSegmentButtonControl.h; sourceTree = "<group>"; };
+		196B8E321518937400DAD14A /* MEXSegmentButtonControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXSegmentButtonControl.m; sourceTree = "<group>"; };
+		196B8E461518A00100DAD14A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		196B8E481518A00100DAD14A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MainWindow.xib; sourceTree = "<group>"; };
+		196B8E4A1518A00100DAD14A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MEXWavingViewController.xib; sourceTree = "<group>"; };
 		199CB60014FEA3CA00A16A97 /* MexicanWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MexicanWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		199CB60414FEA3CA00A16A97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		199CB60614FEA3CA00A16A97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -134,6 +141,8 @@
 				1903F3CF1510F50B00807542 /* MEXLampView.m */,
 				1903F3D6151236B800807542 /* MEXCrowdTypeSelectionControl.h */,
 				1903F3D7151236B900807542 /* MEXCrowdTypeSelectionControl.m */,
+				196B8E311518937400DAD14A /* MEXSegmentButtonControl.h */,
+				196B8E321518937400DAD14A /* MEXSegmentButtonControl.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -168,15 +177,26 @@
 				196B8E0E1517B58700DAD14A /* iTunesArtwork.png */,
 				196B8E0F1517B58700DAD14A /* light-blob.png */,
 				196B8E101517B58700DAD14A /* light-blob@2x.png */,
-				196B8E111517B58700DAD14A /* scale_down_assets.bash */,
 			);
 			name = Images;
 			path = MexicanWave/Images;
 			sourceTree = "<group>";
 		};
+		196B8E441518A00100DAD14A /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				196B8E451518A00100DAD14A /* InfoPlist.strings */,
+				196B8E471518A00100DAD14A /* MainWindow.xib */,
+				196B8E491518A00100DAD14A /* MEXWavingViewController.xib */,
+			);
+			name = en.lproj;
+			path = MexicanWave/en.lproj;
+			sourceTree = "<group>";
+		};
 		199CB5F514FEA3CA00A16A97 = {
 			isa = PBXGroup;
 			children = (
+				196B8E441518A00100DAD14A /* en.lproj */,
 				196B8DF51517B58700DAD14A /* Images */,
 				199CB60A14FEA3CA00A16A97 /* MexicanWave */,
 				199CB60314FEA3CA00A16A97 /* Frameworks */,
@@ -328,7 +348,9 @@
 				196B8E2A1517B58700DAD14A /* iTunesArtwork.png in Resources */,
 				196B8E2B1517B58700DAD14A /* light-blob.png in Resources */,
 				196B8E2C1517B58700DAD14A /* light-blob@2x.png in Resources */,
-				196B8E2D1517B58700DAD14A /* scale_down_assets.bash in Resources */,
+				196B8E4B1518A00100DAD14A /* InfoPlist.strings in Resources */,
+				196B8E4C1518A00100DAD14A /* MainWindow.xib in Resources */,
+				196B8E4D1518A00100DAD14A /* MEXWavingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,12 +369,37 @@
 				1903F3CD1510F23A00807542 /* MEXWaveFxView.m in Sources */,
 				1903F3D01510F50C00807542 /* MEXLampView.m in Sources */,
 				1903F3D8151236BB00807542 /* MEXCrowdTypeSelectionControl.m in Sources */,
+				196B8E331518937400DAD14A /* MEXSegmentButtonControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		196B8E451518A00100DAD14A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				196B8E461518A00100DAD14A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		196B8E471518A00100DAD14A /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				196B8E481518A00100DAD14A /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		196B8E491518A00100DAD14A /* MEXWavingViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				196B8E4A1518A00100DAD14A /* en */,
+			);
+			name = MEXWavingViewController.xib;
+			sourceTree = "<group>";
+		};
 		199CB60D14FEA3CA00A16A97 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

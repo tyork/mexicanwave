@@ -7,6 +7,7 @@
 //
 
 #import "MEXCrowdTypeSelectionControl.h"
+#import "MEXSegmentButtonControl.h"
 
 @interface MEXCrowdTypeSelectionControl ()
 @property (nonatomic,retain) NSArray* buttons;
@@ -53,35 +54,33 @@
     self.backgroundColor = [UIColor clearColor];
     self.opaque = NO;
     
-    UIButton* leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftButton setBackgroundImage:[[UIImage imageNamed:@"button-l"] stretchableImageWithLeftCapWidth:39 topCapHeight:0] forState:UIControlStateNormal];
-    [leftButton setImage:[UIImage imageNamed:@"icon-group"] forState:UIControlStateNormal];
-    [leftButton setTitle:@"Fun" forState:UIControlStateSelected];
-    [leftButton setTitle:@"Fun" forState:UIControlStateSelected|UIControlStateHighlighted];
-    [leftButton setContentEdgeInsets:UIEdgeInsetsMake(0, 20.0f, 0, 5.0f)];
+    MEXSegmentButtonControl* leftButton = [[[MEXSegmentButtonControl alloc] initWithFrame:CGRectZero] autorelease];
+    leftButton.backgroundImageView.image = [[UIImage imageNamed:@"button-l"] stretchableImageWithLeftCapWidth:39 topCapHeight:0];
+    leftButton.imageView.image = [UIImage imageNamed:@"icon-group"];
+    leftButton.titleView.text = @"Fun";
+    leftButton.contentInsets = UIEdgeInsetsMake(0, 20.0f, 0, 5.0f);
     [leftButton addTarget:self action:@selector(didTapSegment:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:leftButton];
 
     UIImageView* leftDivider = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"button-separator"]] autorelease];
     [self addSubview:leftDivider];
     
-    UIButton* middleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [middleButton setBackgroundImage:[UIImage imageNamed:@"button-m"] forState:UIControlStateNormal];
-    [middleButton setImage:[UIImage imageNamed:@"icon-music"] forState:UIControlStateNormal];
-    [middleButton setTitle:@"Gig" forState:UIControlStateSelected];
-    [middleButton setTitle:@"Gig" forState:UIControlStateSelected|UIControlStateHighlighted];
+    MEXSegmentButtonControl* middleButton = [[[MEXSegmentButtonControl alloc] initWithFrame:CGRectZero] autorelease];
+    middleButton.backgroundImageView.image = [UIImage imageNamed:@"button-m"];
+    middleButton.imageView.image = [UIImage imageNamed:@"icon-music"];
+    middleButton.titleView.text = @"Gig";
+    middleButton.contentInsets = UIEdgeInsetsMake(0, 10.0f, 0, 10.0f);
     [middleButton addTarget:self action:@selector(didTapSegment:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:middleButton];
 
     UIImageView* rightDivider = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"button-separator"]] autorelease];
     [self addSubview:rightDivider];
 
-    UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightButton setBackgroundImage:[[UIImage imageNamed:@"button-r"] stretchableImageWithLeftCapWidth:1 topCapHeight:0] forState:UIControlStateNormal];
-    [rightButton setImage:[UIImage imageNamed:@"icon-stadium"] forState:UIControlStateNormal];
-    [rightButton setTitle:@"Stadium" forState:UIControlStateSelected|UIControlStateHighlighted];
-    [rightButton setTitle:@"Stadium" forState:UIControlStateSelected];
-    [rightButton setContentEdgeInsets:UIEdgeInsetsMake(0, 5.0f, 0, 20.0f)];
+    MEXSegmentButtonControl* rightButton = [[[MEXSegmentButtonControl alloc] initWithFrame:CGRectZero] autorelease];
+    rightButton.backgroundImageView.image = [[UIImage imageNamed:@"button-r"] stretchableImageWithLeftCapWidth:1 topCapHeight:0];
+    rightButton.imageView.image = [UIImage imageNamed:@"icon-stadium"];
+    rightButton.titleView.text = @"Stadium";
+    rightButton.contentInsets = UIEdgeInsetsMake(0, 5.0f, 0, 20.0f);
     [rightButton addTarget:self action:@selector(didTapSegment:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:rightButton];
 
@@ -135,30 +134,9 @@
     
     // Size and position the middle button.
     UIView* middleButton = [self.buttons objectAtIndex:1];
-    const CGSize middleButtonSize = [rightButton sizeThatFits:CGSizeZero];
+    const CGSize middleButtonSize = [middleButton sizeThatFits:CGSizeZero];
     middleButton.frame = CGRectMake(CGRectGetMaxX(leftDivider.frame), 0, CGRectGetMinX(rightDivider.frame) - CGRectGetMaxX(leftDivider.frame), middleButtonSize.height);
-/*    
-    __block CGFloat buttonWidth = 0.0f;
-    [self.buttons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        CGSize minimumSize = [obj sizeThatFits:CGSizeZero];
-        const NSUInteger indexAsButton = [self.buttons indexOfObject:obj];
-        minimumSize.width = (indexAsButton != NSNotFound && indexAsButton == self.selectedSegment) ? 100.0f : minimumSize.width;        
-        buttonWidth += minimumSize.width;            
-    }];
-    
-    __block CGFloat currentOriginX = 0.0f;
-    [self.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        CGSize minimumSize = [obj sizeThatFits:CGSizeZero];
-        const NSUInteger indexAsButton = [self.buttons indexOfObject:obj];
-        minimumSize.width = (indexAsButton != NSNotFound && indexAsButton == self.selectedSegment) ? 100.0f : minimumSize.width;
-        
-        if(idx < (self.subviews.count-1)) {
-            [obj setBounds:CGRectMake(0, 0, minimumSize.width, minimumSize.height)];
-            [obj setCenter:CGPointMake(minimumSize.width*0.5f + currentOriginX, 0.5f*minimumSize.height)];
-            currentOriginX += minimumSize.width;            
-        }
-        
-    }];    */
+
 }
 
 @end
