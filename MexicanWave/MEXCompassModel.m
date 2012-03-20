@@ -8,7 +8,7 @@
 
 #import "MEXCompassModel.h"
 
-#define kMinimumHeadingDelta 10.0f
+#define kFilterStrength 0.25f
 
 @interface MEXCompassModel ()
 @property (nonatomic,retain) CLLocationManager* locationManager;
@@ -31,10 +31,8 @@
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
-    const float latestHeadingAngle = [newHeading magneticHeading];
-    if(fabsf(latestHeadingAngle - self.headingInDegreesEastOfNorth) > kMinimumHeadingDelta) {
-        self.headingInDegreesEastOfNorth = latestHeadingAngle;
-    }
+    const float latestHeadingAngle = [newHeading magneticHeading];    
+    self.headingInDegreesEastOfNorth = self.headingInDegreesEastOfNorth * (1.0f - kFilterStrength) + latestHeadingAngle * kFilterStrength;
 }
 
 #pragma mark - Lifecycle
