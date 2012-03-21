@@ -28,8 +28,6 @@ bundleVersion=`/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' $infoPLIST`
 appName=`/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' $infoPLIST`
 appIcon=`/usr/libexec/PlistBuddy -c 'Print :CFBundleIconFiles:0' $infoPLIST`
 
-#ipaName=`/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' $infoPLIST | sed -e s/.app/.ipa/`
-
 # Figure out if we need shine on the various icons
 if grep -q "UIPrerenderedIcon" $infoPLIST
 then
@@ -60,7 +58,7 @@ cat << EOF > $targetPLIST
                    <key>kind</key>
                    <string>software-package</string>
                    <key>url</key>
-                   <string>$OTAURL$ipaName</string>
+                   <string>${OTAURL}manifest/$ipaName</string>
                </dict>
                <dict>
                    <key>kind</key>
@@ -68,7 +66,7 @@ cat << EOF > $targetPLIST
                    <key>needs-shine</key>
                    $needsShine
                    <key>url</key>
-                   <string>$OTAURL$appIcon</string>
+                   <string>${OTAURL}manifest/$appIcon</string>
                </dict>
                <dict>
                    <key>kind</key>
@@ -76,7 +74,7 @@ cat << EOF > $targetPLIST
                    <key>needs-shine</key>
                    $needsShine
                    <key>url</key>
-                   <string>$OTAURL itunesArtwork</string>
+                   <string>${OTAURL}manifest/itunesArtwork</string>
                </dict>
            </array>
            <key>metadata</key>
