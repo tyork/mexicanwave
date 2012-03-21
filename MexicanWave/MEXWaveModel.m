@@ -71,7 +71,7 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
         return 0.0f;
     }
     
-    return ((float)fmod([[NSDate date] timeIntervalSinceReferenceDate] + (self.compassModel.headingInDegreesEastOfNorth / 360.0)*self.wavePeriodInSeconds, self.wavePeriodInSeconds))/self.wavePeriodInSeconds;
+    return ((float)fmod([[NSDate date] timeIntervalSinceReferenceDate] - (self.compassModel.headingInDegreesEastOfNorth / 360.0)*self.wavePeriodInSeconds, self.wavePeriodInSeconds))/self.wavePeriodInSeconds;
 }
 
 - (void)setCrowdType:(MEXCrowdType)newValue {
