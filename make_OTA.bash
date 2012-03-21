@@ -60,7 +60,7 @@ cat << EOF > $targetPLIST
                    <key>kind</key>
                    <string>software-package</string>
                    <key>url</key>
-                   <string>$OTAURL/$ipaName</string>
+                   <string>$OTAURL$ipaName</string>
                </dict>
                <dict>
                    <key>kind</key>
@@ -68,7 +68,7 @@ cat << EOF > $targetPLIST
                    <key>needs-shine</key>
                    $needsShine
                    <key>url</key>
-                   <string>$OTAURL/$appIcon</string>
+                   <string>$OTAURL$appIcon</string>
                </dict>
                <dict>
                    <key>kind</key>
@@ -76,7 +76,7 @@ cat << EOF > $targetPLIST
                    <key>needs-shine</key>
                    $needsShine
                    <key>url</key>
-                   <string>$OTAURL/itunesArtwork</string>
+                   <string>$OTAURL itunesArtwork</string>
                </dict>
            </array>
            <key>metadata</key>
