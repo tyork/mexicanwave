@@ -20,7 +20,7 @@ else
 fi
 
 # Build the URL to the artifacts
-OTAURL=$jobURL
+OTAURL=${jobURL%/}
 
 # Extract the application-specific content from the application's Info plist
 bundleIdentifier=`/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' $infoPLIST`
@@ -58,7 +58,7 @@ cat << EOF > $targetPLIST
                    <key>kind</key>
                    <string>software-package</string>
                    <key>url</key>
-                   <string>${OTAURL}manifest/$ipaName</string>
+                   <string>${OTAURL}/$ipaName</string>
                </dict>
                <dict>
                    <key>kind</key>
@@ -66,7 +66,7 @@ cat << EOF > $targetPLIST
                    <key>needs-shine</key>
                    $needsShine
                    <key>url</key>
-                   <string>${OTAURL}manifest/$appIcon</string>
+                   <string>${OTAURL}/$appIcon</string>
                </dict>
                <dict>
                    <key>kind</key>
@@ -74,7 +74,7 @@ cat << EOF > $targetPLIST
                    <key>needs-shine</key>
                    $needsShine
                    <key>url</key>
-                   <string>${OTAURL}manifest/itunesArtwork</string>
+                   <string>${OTAURL}/itunesArtwork</string>
                </dict>
            </array>
            <key>metadata</key>
@@ -105,7 +105,7 @@ fi
 ############ Make the HTML file
 
 # Encode the URL to the OTA plist
-OTAmanifestURL=${OTAURL}${targetPLIST}
+OTAmanifestURL=${OTAURL}/${targetPLIST}
 #encodedManifestURL="$(perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' "$OTAmanifestURL")"
 encodedManifestURL="$(echo $OTAmanifestURL | xxd -plain | tr -d '\n' | sed 's/\(..\)/%\1/g')"
 
