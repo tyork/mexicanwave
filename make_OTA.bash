@@ -106,8 +106,8 @@ fi
 
 # Encode the URL to the OTA plist
 OTAmanifestURL=${OTAURL}/${targetPLIST}
-#encodedManifestURL="$(perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' "$OTAmanifestURL")"
-encodedManifestURL="$(echo $OTAmanifestURL | xxd -plain | tr -d '\n' | sed 's/\(..\)/%\1/g')"
+encodedManifestURL="$(perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' "$OTAmanifestURL")"
+#encodedManifestURL="$(echo $OTAmanifestURL | xxd -plain | tr -d '\n' | sed 's/\(..\)/%\1/g')"
 
 htmlPageText='<!DOCTYPE HTML>
 <html>
