@@ -105,7 +105,7 @@ fi
 ############ Make the HTML file
 
 # Encode the URL to the OTA plist
-OTAmanifestURL=$OTAURL'/'$targetPLIST
+OTAmanifestURL=${OTAURL}${targetPLIST}
 #encodedManifestURL="$(perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' "$OTAmanifestURL")"
 encodedManifestURL="$(echo $OTAmanifestURL | xxd -plain | tr -d '\n' | sed 's/\(..\)/%\1/g')"
 
