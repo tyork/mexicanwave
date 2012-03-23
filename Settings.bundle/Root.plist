@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>FooterText</key>
+			<string>Choose a colour for your screen to turn as the wave passes by</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Colour</string>
+			<key>Key</key>
+			<string>color_preference</string>
+			<key>DefaultValue</key>
+			<string>White</string>
+			<key>Titles</key>
+			<array>
+				<string>White</string>
+				<string>Red</string>
+				<string>Orange</string>
+				<string>Yellow</string>
+				<string>Green</string>
+				<string>Blue</string>
+				<string>Purple</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>white</string>
+				<string>red</string>
+				<string>orange</string>
+				<string>yellow</string>
+				<string>green</string>
+				<string>blue</string>
+				<string>purple</string>
+			</array>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>

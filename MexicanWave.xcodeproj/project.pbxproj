@@ -51,6 +51,7 @@
 		199CB63214FEAAC000A16A97 /* MEXWaveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB63114FEAABF00A16A97 /* MEXWaveModel.m */; };
 		199CB63514FF84DE00A16A97 /* MEXCompassModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB63414FF84DD00A16A97 /* MEXCompassModel.m */; };
 		199CB63E14FF8FF700A16A97 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB63D14FF8FF700A16A97 /* CoreLocation.framework */; };
+		CFA3C537151C9E64005BFA14 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CFA3C536151C9E64005BFA14 /* Settings.bundle */; };
 		E254CA241513995100DAB66E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E254CA231513995100DAB66E /* QuartzCore.framework */; };
 		E254CA261513A49400DAB66E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E254CA251513A49400DAB66E /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
@@ -111,6 +112,7 @@
 		199CB63314FF84DC00A16A97 /* MEXCompassModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXCompassModel.h; sourceTree = "<group>"; };
 		199CB63414FF84DD00A16A97 /* MEXCompassModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXCompassModel.m; sourceTree = "<group>"; };
 		199CB63D14FF8FF700A16A97 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CFA3C536151C9E64005BFA14 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		E254CA231513995100DAB66E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E254CA251513A49400DAB66E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -196,6 +198,7 @@
 		199CB5F514FEA3CA00A16A97 = {
 			isa = PBXGroup;
 			children = (
+				CFA3C536151C9E64005BFA14 /* Settings.bundle */,
 				196B8E441518A00100DAD14A /* en.lproj */,
 				196B8DF51517B58700DAD14A /* Images */,
 				199CB60A14FEA3CA00A16A97 /* MexicanWave */,
@@ -351,6 +354,7 @@
 				196B8E4B1518A00100DAD14A /* InfoPlist.strings in Resources */,
 				196B8E4C1518A00100DAD14A /* MainWindow.xib in Resources */,
 				196B8E4D1518A00100DAD14A /* MEXWavingViewController.xib in Resources */,
+				CFA3C537151C9E64005BFA14 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
