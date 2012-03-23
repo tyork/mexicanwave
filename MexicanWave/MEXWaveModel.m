@@ -8,6 +8,7 @@
 
 #import "MEXWaveModel.h"
 #import "MEXCompassModel.h"
+#import "ios-ntp/ios-ntp.h"
 
 #define MIN_WAVE_PERIOD 0.5
 #define MAX_WAVE_PERIOD 10.0
@@ -70,8 +71,8 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
     if(self.wavePeriodInSeconds <= 0.0f) {
         return 0.0f;
     }
-    
-    return ((float)fmod([[NSDate date] timeIntervalSinceReferenceDate] - (self.compassModel.headingInDegreesEastOfNorth / 360.0)*self.wavePeriodInSeconds, self.wavePeriodInSeconds))/self.wavePeriodInSeconds;
+    NSDate* correctedDate = [NSDate networkDate];
+    return ((float)fmod([correctedDate timeIntervalSinceReferenceDate] - (self.compassModel.headingInDegreesEastOfNorth / 360.0)*self.wavePeriodInSeconds, self.wavePeriodInSeconds))/self.wavePeriodInSeconds;
 }
 
 - (void)setCrowdType:(MEXCrowdType)newValue {
@@ -133,7 +134,7 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
     [noteCenter addObserver:self selector:@selector(scheduleWave) name:UIApplicationSignificantTimeChangeNotification object:nil];
     [noteCenter addObserver:self selector:@selector(didChangeActivityState) name:UIApplicationDidBecomeActiveNotification object:nil];
     [noteCenter addObserver:self selector:@selector(didChangeActivityState) name:UIApplicationDidEnterBackgroundNotification object:nil];
-    
+        
     [self scheduleWave];
     return self;
 }

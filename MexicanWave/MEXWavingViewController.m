@@ -59,6 +59,11 @@
 
 - (void)torchOff {
     AVCaptureDevice* backCamera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if(![backCamera respondsToSelector:@selector(isTorchAvailable)]) {
+        // TODO: iOS 4.x
+        return;
+    }
+
     if([backCamera isTorchAvailable] && [backCamera torchMode] != AVCaptureTorchModeOff) {
         if([backCamera lockForConfiguration:nil]) {
             [backCamera setTorchMode:AVCaptureTorchModeOff];
@@ -67,8 +72,13 @@
     }
 }
 
-- (void)torchOn {
+- (void)torchOn {    
     AVCaptureDevice* backCamera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if(![backCamera respondsToSelector:@selector(isTorchAvailable)]) {
+        // TODO: iOS 4.x
+        return;
+    }
+    
     if([backCamera isTorchAvailable] && [backCamera isTorchModeSupported:AVCaptureTorchModeOn]) {
         if([backCamera lockForConfiguration:nil]) {
             [backCamera setTorchMode:AVCaptureTorchModeOn];

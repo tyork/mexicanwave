@@ -41,6 +41,7 @@
 		196B8E4B1518A00100DAD14A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 196B8E451518A00100DAD14A /* InfoPlist.strings */; };
 		196B8E4C1518A00100DAD14A /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196B8E471518A00100DAD14A /* MainWindow.xib */; };
 		196B8E4D1518A00100DAD14A /* MEXWavingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196B8E491518A00100DAD14A /* MEXWavingViewController.xib */; };
+		199B5760151CDFB200155281 /* ios-ntp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199B575F151CDFB200155281 /* ios-ntp.framework */; };
 		199CB60514FEA3CA00A16A97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60414FEA3CA00A16A97 /* UIKit.framework */; };
 		199CB60714FEA3CA00A16A97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60614FEA3CA00A16A97 /* Foundation.framework */; };
 		199CB60914FEA3CA00A16A97 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60814FEA3CA00A16A97 /* CoreGraphics.framework */; };
@@ -94,6 +95,7 @@
 		196B8E461518A00100DAD14A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		196B8E481518A00100DAD14A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MainWindow.xib; sourceTree = "<group>"; };
 		196B8E4A1518A00100DAD14A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MEXWavingViewController.xib; sourceTree = "<group>"; };
+		199B575F151CDFB200155281 /* ios-ntp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "ios-ntp.framework"; path = "ios-ntp/ios-ntp.framework"; sourceTree = "<group>"; };
 		199CB60014FEA3CA00A16A97 /* MexicanWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MexicanWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		199CB60414FEA3CA00A16A97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		199CB60614FEA3CA00A16A97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -126,6 +128,7 @@
 				199CB60514FEA3CA00A16A97 /* UIKit.framework in Frameworks */,
 				199CB60714FEA3CA00A16A97 /* Foundation.framework in Frameworks */,
 				199CB60914FEA3CA00A16A97 /* CoreGraphics.framework in Frameworks */,
+				199B5760151CDFB200155281 /* ios-ntp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +218,7 @@
 		199CB60314FEA3CA00A16A97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				199B575F151CDFB200155281 /* ios-ntp.framework */,
 				E254CA251513A49400DAB66E /* AVFoundation.framework */,
 				E254CA231513995100DAB66E /* QuartzCore.framework */,
 				199CB63D14FF8FF700A16A97 /* CoreLocation.framework */,
@@ -457,10 +461,14 @@
 		199CB61F14FEA3CA00A16A97 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ios-ntp\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MexicanWave/MexicanWave-Prefix.pch";
 				INFOPLIST_FILE = "MexicanWave/MexicanWave-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -470,10 +478,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ios-ntp\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MexicanWave/MexicanWave-Prefix.pch";
 				INFOPLIST_FILE = "MexicanWave/MexicanWave-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
@@ -503,10 +515,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ios-ntp\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MexicanWave/MexicanWave-Prefix.pch";
 				INFOPLIST_FILE = "MexicanWave/MexicanWave-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
