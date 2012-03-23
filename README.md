@@ -5,4 +5,4 @@ Mexican wave thing.
 
 TODO
 ====
-- Derive a clock correction from an NTP service.
+- Add backoff and correction persistence behaviour to the network clock service.
