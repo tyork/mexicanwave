@@ -23,4 +23,7 @@ NSString* const MEXWaveModelDidWaveNotification;
 @property (nonatomic,readonly) NSUInteger numberOfPeaks;
 @property (nonatomic,readonly) float wavePhase;
 
+- (void)pause;
+- (void)resume;
+
 @end

@@ -12,6 +12,7 @@
 #import "MEXCrowdTypeSelectionControl.h"
 
 #import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 #define kTorchOnTime 0.25f
 
@@ -24,6 +25,7 @@
 @synthesize waveView;
 @synthesize crowdTypeSelectionControl;
 @synthesize waveModel;
+@synthesize vibrationOnWaveEnabled;
 
 - (MEXWaveModel*)waveModel {
     if(!waveModel) {
@@ -91,6 +93,20 @@
     }
 }
 
+#pragma mark - App lifecycle
+
+- (void)pause {
+    [self torchOff];
+    [self.waveModel pause];
+}
+
+- (void)resume {
+    // Refetch our preferences, they may have changed while we were in the background.
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+	self.vibrationOnWaveEnabled = [defaults boolForKey:@"vibration_preference"];    
+    [self.waveModel resume];
+}
+
 #pragma mark - Notifications
 
 // Handles behaviour on wave trigger, i.e. wave has just passed our bearing
@@ -101,6 +117,11 @@
     
     // Flash the torch
     [self torchOn];
+
+    // Vibrate
+    if(self.isVibrationOnWaveEnabled) {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    }
 }
 
 #pragma mark - Controller lifecycle
@@ -111,6 +132,7 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
+    [waveModel pause];
     [waveModel removeObserver:self forKeyPath:kModelKeyPathForPhase];
     [waveModel removeObserver:self forKeyPath:kModelKeyPathForPeriod];
     [waveModel removeObserver:self forKeyPath:kModelKeyPathForPeaks];
@@ -136,11 +158,6 @@
     self.waveView = nil;
     self.crowdTypeSelectionControl = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    // TODO: start waving
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

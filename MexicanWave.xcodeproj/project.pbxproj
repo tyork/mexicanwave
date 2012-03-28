@@ -10,6 +10,8 @@
 		1903F3CD1510F23A00807542 /* MEXWaveFxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1903F3CC1510F23A00807542 /* MEXWaveFxView.m */; };
 		1903F3D01510F50C00807542 /* MEXLampView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1903F3CF1510F50B00807542 /* MEXLampView.m */; };
 		1903F3D8151236BB00807542 /* MEXCrowdTypeSelectionControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1903F3D7151236B900807542 /* MEXCrowdTypeSelectionControl.m */; };
+		1967B90F1523044B00A924D5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1967B90E1523044B00A924D5 /* AudioToolbox.framework */; };
+		1967B91A1523050700A924D5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1967B9191523050700A924D5 /* Settings.bundle */; };
 		196B8E121517B58700DAD14A /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 196B8DF61517B58700DAD14A /* background.png */; };
 		196B8E131517B58700DAD14A /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196B8DF71517B58700DAD14A /* background@2x.png */; };
 		196B8E141517B58700DAD14A /* button-l.png in Resources */ = {isa = PBXBuildFile; fileRef = 196B8DF81517B58700DAD14A /* button-l.png */; };
@@ -45,7 +47,6 @@
 		199CB60514FEA3CA00A16A97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60414FEA3CA00A16A97 /* UIKit.framework */; };
 		199CB60714FEA3CA00A16A97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60614FEA3CA00A16A97 /* Foundation.framework */; };
 		199CB60914FEA3CA00A16A97 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199CB60814FEA3CA00A16A97 /* CoreGraphics.framework */; };
-		199CB60F14FEA3CA00A16A97 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 199CB60D14FEA3CA00A16A97 /* InfoPlist.strings */; };
 		199CB61114FEA3CA00A16A97 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB61014FEA3CA00A16A97 /* main.m */; };
 		199CB61514FEA3CA00A16A97 /* MEXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB61414FEA3CA00A16A97 /* MEXAppDelegate.m */; };
 		199CB62C14FEA47C00A16A97 /* MEXWavingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 199CB62A14FEA47C00A16A97 /* MEXWavingViewController.m */; };
@@ -63,6 +64,8 @@
 		1903F3CF1510F50B00807542 /* MEXLampView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXLampView.m; sourceTree = "<group>"; };
 		1903F3D6151236B800807542 /* MEXCrowdTypeSelectionControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXCrowdTypeSelectionControl.h; sourceTree = "<group>"; };
 		1903F3D7151236B900807542 /* MEXCrowdTypeSelectionControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXCrowdTypeSelectionControl.m; sourceTree = "<group>"; };
+		1967B90E1523044B00A924D5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		1967B9191523050700A924D5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = MexicanWave/Settings.bundle; sourceTree = "<group>"; };
 		196B8DF61517B58700DAD14A /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		196B8DF71517B58700DAD14A /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		196B8DF81517B58700DAD14A /* button-l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-l.png"; sourceTree = "<group>"; };
@@ -101,7 +104,6 @@
 		199CB60614FEA3CA00A16A97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		199CB60814FEA3CA00A16A97 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		199CB60C14FEA3CA00A16A97 /* MexicanWave-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MexicanWave-Info.plist"; sourceTree = "<group>"; };
-		199CB60E14FEA3CA00A16A97 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		199CB61014FEA3CA00A16A97 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		199CB61214FEA3CA00A16A97 /* MexicanWave-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MexicanWave-Prefix.pch"; sourceTree = "<group>"; };
 		199CB61314FEA3CA00A16A97 /* MEXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEXAppDelegate.h; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1967B90F1523044B00A924D5 /* AudioToolbox.framework in Frameworks */,
 				E254CA261513A49400DAB66E /* AVFoundation.framework in Frameworks */,
 				E254CA241513995100DAB66E /* QuartzCore.framework in Frameworks */,
 				199CB63E14FF8FF700A16A97 /* CoreLocation.framework in Frameworks */,
@@ -148,6 +151,16 @@
 				196B8E321518937400DAD14A /* MEXSegmentButtonControl.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		1967B918152304E800A924D5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				196B8E441518A00100DAD14A /* en.lproj */,
+				196B8DF51517B58700DAD14A /* Images */,
+				1967B9191523050700A924D5 /* Settings.bundle */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		196B8DF51517B58700DAD14A /* Images */ = {
@@ -199,8 +212,7 @@
 		199CB5F514FEA3CA00A16A97 = {
 			isa = PBXGroup;
 			children = (
-				196B8E441518A00100DAD14A /* en.lproj */,
-				196B8DF51517B58700DAD14A /* Images */,
+				1967B918152304E800A924D5 /* Resources */,
 				199CB60A14FEA3CA00A16A97 /* MexicanWave */,
 				199CB60314FEA3CA00A16A97 /* Frameworks */,
 				199CB60114FEA3CA00A16A97 /* Products */,
@@ -218,6 +230,7 @@
 		199CB60314FEA3CA00A16A97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1967B90E1523044B00A924D5 /* AudioToolbox.framework */,
 				199B575F151CDFB200155281 /* ios-ntp.framework */,
 				E254CA251513A49400DAB66E /* AVFoundation.framework */,
 				E254CA231513995100DAB66E /* QuartzCore.framework */,
@@ -245,7 +258,6 @@
 			isa = PBXGroup;
 			children = (
 				199CB60C14FEA3CA00A16A97 /* MexicanWave-Info.plist */,
-				199CB60D14FEA3CA00A16A97 /* InfoPlist.strings */,
 				199CB61014FEA3CA00A16A97 /* main.m */,
 				199CB61214FEA3CA00A16A97 /* MexicanWave-Prefix.pch */,
 			);
@@ -324,7 +336,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				199CB60F14FEA3CA00A16A97 /* InfoPlist.strings in Resources */,
 				196B8E121517B58700DAD14A /* background.png in Resources */,
 				196B8E131517B58700DAD14A /* background@2x.png in Resources */,
 				196B8E141517B58700DAD14A /* button-l.png in Resources */,
@@ -355,6 +366,7 @@
 				196B8E4B1518A00100DAD14A /* InfoPlist.strings in Resources */,
 				196B8E4C1518A00100DAD14A /* MainWindow.xib in Resources */,
 				196B8E4D1518A00100DAD14A /* MEXWavingViewController.xib in Resources */,
+				1967B91A1523050700A924D5 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,14 +414,6 @@
 				196B8E4A1518A00100DAD14A /* en */,
 			);
 			name = MEXWavingViewController.xib;
-			sourceTree = "<group>";
-		};
-		199CB60D14FEA3CA00A16A97 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				199CB60E14FEA3CA00A16A97 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

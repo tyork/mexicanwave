@@ -15,10 +15,14 @@
 @interface MEXWavingViewController : UIViewController
 
 @property (nonatomic,retain) MEXWaveModel* waveModel;
+@property (nonatomic,getter=isVibrationOnWaveEnabled) BOOL vibrationOnWaveEnabled;
 
 @property (nonatomic,retain) IBOutlet MEXWaveFxView* waveView;
 @property (nonatomic,retain) IBOutlet MEXCrowdTypeSelectionControl* crowdTypeSelectionControl;
 
 - (IBAction)didChangeCrowdType:(id)sender;
+
+- (void)pause;
+- (void)resume;
 
 @end

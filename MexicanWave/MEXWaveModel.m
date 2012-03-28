@@ -17,7 +17,7 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
 
 @interface MEXWaveModel ()
 @property (nonatomic,retain) MEXCompassModel* compassModel;
-
+@property (nonatomic,getter=isRunning) BOOL running;
 
 - (void)waveDidPassOurBearing;
 - (void)cancelWave;
@@ -28,6 +28,7 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
 
 @synthesize crowdType;
 @synthesize compassModel;
+@synthesize running;
 
 + (NSSet*)keyPathsForValuesAffectingNumberOfPeaks {
     return [NSSet setWithObject:@"crowdType"];
@@ -111,14 +112,18 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
     [self performSelector:@selector(waveDidPassOurBearing) withObject:nil afterDelay:timeToNextWave];
 }
 
-- (void)didChangeActivityState {
-    if([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
-        [self.compassModel stopCompass];
-    }
-    else {
-        [self.compassModel startCompass];
-        [self scheduleWave];
-    }
+- (void)pause {
+    if(!self.isRunning) return;
+    [self.compassModel stopCompass];
+    [self cancelWave];    
+    self.running = NO;
+}
+
+- (void)resume {
+    if(self.isRunning) return;
+    [self.compassModel startCompass];
+    [self scheduleWave];    
+    self.running = YES;
 }
      
 #pragma mark - Lifecycle
@@ -131,11 +136,7 @@ NSString* const MEXWaveModelDidWaveNotification = @"MEXWaveModelDidWaveNotificat
     compassModel = [[MEXCompassModel alloc] init];
         
     NSNotificationCenter* noteCenter = [NSNotificationCenter defaultCenter];
-    [noteCenter addObserver:self selector:@selector(scheduleWave) name:UIApplicationSignificantTimeChangeNotification object:nil];
-    [noteCenter addObserver:self selector:@selector(didChangeActivityState) name:UIApplicationDidBecomeActiveNotification object:nil];
-    [noteCenter addObserver:self selector:@selector(didChangeActivityState) name:UIApplicationDidEnterBackgroundNotification object:nil];
-        
-    [self scheduleWave];
+    [noteCenter addObserver:self selector:@selector(scheduleWave) name:UIApplicationSignificantTimeChangeNotification object:nil];        
     return self;
 }
 
