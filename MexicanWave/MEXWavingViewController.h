@@ -16,6 +16,7 @@
 
 @property (nonatomic,retain) MEXWaveModel* waveModel;
 @property (nonatomic,getter=isVibrationOnWaveEnabled) BOOL vibrationOnWaveEnabled;
+@property (nonatomic,getter=isSoundOnWaveEnabled) BOOL soundOnWaveEnabled;
 
 @property (nonatomic,retain) IBOutlet MEXWaveFxView* waveView;
 @property (nonatomic,retain) IBOutlet MEXCrowdTypeSelectionControl* crowdTypeSelectionControl;

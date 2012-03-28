@@ -23,6 +23,7 @@
 
 @interface MEXWavingViewController ()
 @property (nonatomic,retain) MEXLegacyTorchController* legacyTorchController;
+@property (nonatomic) SystemSoundID waveSoundID;
 
 - (void)setTorchMode:(AVCaptureTorchMode)newMode;
 @end
@@ -33,8 +34,9 @@
 @synthesize waveView;
 @synthesize crowdTypeSelectionControl;
 @synthesize waveModel;
-@synthesize vibrationOnWaveEnabled;
+@synthesize vibrationOnWaveEnabled, soundOnWaveEnabled;
 @synthesize legacyTorchController;
+@synthesize waveSoundID;
 
 - (MEXWaveModel*)waveModel {
     if(!waveModel) {
@@ -114,10 +116,11 @@
 }
 
 - (void)resume {
-    // Refetch our preferences, they may have changed while we were in the background.
+    // Refetch our settings preferences, they may have changed while we were in the background.
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
 	self.vibrationOnWaveEnabled = [defaults boolForKey:@"vibration_preference"];    
-
+    self.soundOnWaveEnabled = [defaults boolForKey:@"sound_preference"];
+    
     // Start running again
     [self.waveModel resume];
 }
@@ -137,6 +140,11 @@
     if(self.isVibrationOnWaveEnabled) {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     }
+    
+    // Play sound
+    if(self.isSoundOnWaveEnabled) {
+        AudioServicesPlaySystemSound(self.waveSoundID);
+    }
 }
 
 #pragma mark - Controller lifecycle
@@ -152,11 +160,12 @@
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
     [waveModel pause];
     [waveModel removeObserver:self forKeyPath:kModelKeyPathForPhase];
     [waveModel removeObserver:self forKeyPath:kModelKeyPathForPeriod];
     [waveModel removeObserver:self forKeyPath:kModelKeyPathForPeaks];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
+    AudioServicesDisposeSystemSoundID(waveSoundID);
     [waveModel release];
     [waveView release];
     [crowdTypeSelectionControl release];
@@ -172,14 +181,22 @@
     
     // Set crowd type on view from model
     self.crowdTypeSelectionControl.selectedSegment = (MEXCrowdTypeSelectionSegment)self.waveModel.crowdType;
+    
+    // Load in the wave sound.
+    AudioServicesCreateSystemSoundID((CFURLRef)[[NSBundle mainBundle] URLForResource:@"clapping" withExtension:@"caf"], &waveSoundID);
 }
  
 - (void)viewDidUnload {
     [super viewDidUnload];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
+
     [self torchOff];
+
+    AudioServicesDisposeSystemSoundID(waveSoundID);
+    self.waveSoundID = 0;
+
     self.waveView = nil;
     self.crowdTypeSelectionControl = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MEXWaveModelDidWaveNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
