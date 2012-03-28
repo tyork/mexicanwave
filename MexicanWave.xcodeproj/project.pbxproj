@@ -12,6 +12,7 @@
 		1903F3D8151236BB00807542 /* MEXCrowdTypeSelectionControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1903F3D7151236B900807542 /* MEXCrowdTypeSelectionControl.m */; };
 		1967B90F1523044B00A924D5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1967B90E1523044B00A924D5 /* AudioToolbox.framework */; };
 		1967B91A1523050700A924D5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1967B9191523050700A924D5 /* Settings.bundle */; };
+		1967B91E152311C100A924D5 /* MEXLegacyTorchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1967B91D152311C100A924D5 /* MEXLegacyTorchController.m */; };
 		196B8E121517B58700DAD14A /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 196B8DF61517B58700DAD14A /* background.png */; };
 		196B8E131517B58700DAD14A /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196B8DF71517B58700DAD14A /* background@2x.png */; };
 		196B8E141517B58700DAD14A /* button-l.png in Resources */ = {isa = PBXBuildFile; fileRef = 196B8DF81517B58700DAD14A /* button-l.png */; };
@@ -66,6 +67,8 @@
 		1903F3D7151236B900807542 /* MEXCrowdTypeSelectionControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXCrowdTypeSelectionControl.m; sourceTree = "<group>"; };
 		1967B90E1523044B00A924D5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		1967B9191523050700A924D5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = MexicanWave/Settings.bundle; sourceTree = "<group>"; };
+		1967B91C152311C100A924D5 /* MEXLegacyTorchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXLegacyTorchController.h; sourceTree = "<group>"; };
+		1967B91D152311C100A924D5 /* MEXLegacyTorchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXLegacyTorchController.m; sourceTree = "<group>"; };
 		196B8DF61517B58700DAD14A /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		196B8DF71517B58700DAD14A /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		196B8DF81517B58700DAD14A /* button-l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-l.png"; sourceTree = "<group>"; };
@@ -163,6 +166,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		1967B91B152311A400A924D5 /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				1967B91C152311C100A924D5 /* MEXLegacyTorchController.h */,
+				1967B91D152311C100A924D5 /* MEXLegacyTorchController.m */,
+			);
+			name = Legacy;
+			sourceTree = "<group>";
+		};
 		196B8DF51517B58700DAD14A /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +260,7 @@
 				199CB61314FEA3CA00A16A97 /* MEXAppDelegate.h */,
 				199CB61414FEA3CA00A16A97 /* MEXAppDelegate.m */,
 				199CB63814FF851C00A16A97 /* Waving */,
+				1967B91B152311A400A924D5 /* Legacy */,
 				199CB63714FF850400A16A97 /* Compass */,
 				199CB60B14FEA3CA00A16A97 /* Supporting Files */,
 			);
@@ -386,6 +399,7 @@
 				1903F3D01510F50C00807542 /* MEXLampView.m in Sources */,
 				1903F3D8151236BB00807542 /* MEXCrowdTypeSelectionControl.m in Sources */,
 				196B8E331518937400DAD14A /* MEXSegmentButtonControl.m in Sources */,
+				1967B91E152311C100A924D5 /* MEXLegacyTorchController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

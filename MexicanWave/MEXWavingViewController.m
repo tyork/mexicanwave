@@ -10,6 +10,7 @@
 #import "MEXWaveModel.h"
 #import "MEXWaveFxView.h"
 #import "MEXCrowdTypeSelectionControl.h"
+#import "MEXLegacyTorchController.h"            // TODO: Remove this once support for iOS 4.x is not a concern.
 
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
@@ -20,12 +21,20 @@
 #define kModelKeyPathForPhase @"wavePhase"
 #define kModelKeyPathForPeaks @"numberOfPeaks"
 
+@interface MEXWavingViewController ()
+@property (nonatomic,retain) MEXLegacyTorchController* legacyTorchController;
+
+- (void)setTorchMode:(AVCaptureTorchMode)newMode;
+@end
+
+
 @implementation MEXWavingViewController
 
 @synthesize waveView;
 @synthesize crowdTypeSelectionControl;
 @synthesize waveModel;
 @synthesize vibrationOnWaveEnabled;
+@synthesize legacyTorchController;
 
 - (MEXWaveModel*)waveModel {
     if(!waveModel) {
@@ -60,35 +69,37 @@
 #pragma mark - Torch handling
 
 - (void)torchOff {
-    AVCaptureDevice* backCamera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    if(![backCamera respondsToSelector:@selector(isTorchAvailable)]) {
-        // TODO: iOS 4.x
-        return;
+    if(self.legacyTorchController) {
+        // iOS 4.x
+        [self.legacyTorchController torchOff];
+        return;        
     }
-
-    if([backCamera isTorchAvailable] && [backCamera torchMode] != AVCaptureTorchModeOff) {
-        if([backCamera lockForConfiguration:nil]) {
-            [backCamera setTorchMode:AVCaptureTorchModeOff];
-            [backCamera unlockForConfiguration];
-        }
-    }
+    // iOS 5+
+    [self setTorchMode:AVCaptureTorchModeOff];
 }
 
-- (void)torchOn {    
-    AVCaptureDevice* backCamera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    if(![backCamera respondsToSelector:@selector(isTorchAvailable)]) {
-        // TODO: iOS 4.x
-        return;
+- (void)torchOn { 
+    if(self.legacyTorchController) {
+        // iOS 4.x
+        [self.legacyTorchController torchOn];
     }
-    
-    if([backCamera isTorchAvailable] && [backCamera isTorchModeSupported:AVCaptureTorchModeOn]) {
+    else {
+        // iOS 5+
+        [self setTorchMode:AVCaptureTorchModeOn];
+    }
+        
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, kTorchOnTime * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self torchOff];
+    });
+}
+
+- (void)setTorchMode:(AVCaptureTorchMode)newMode {    
+    AVCaptureDevice* backCamera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if([backCamera isTorchAvailable] && [backCamera isTorchModeSupported:newMode] && [backCamera torchMode] != newMode) {
         if([backCamera lockForConfiguration:nil]) {
-            [backCamera setTorchMode:AVCaptureTorchModeOn];
+            [backCamera setTorchMode:newMode];
             [backCamera unlockForConfiguration];
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, kTorchOnTime * NSEC_PER_SEC);
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                [self torchOff];
-            });
         }
     }
 }
@@ -96,7 +107,9 @@
 #pragma mark - App lifecycle
 
 - (void)pause {
+    // Turn off the torch (just in case)
     [self torchOff];
+    // Suspend the model
     [self.waveModel pause];
 }
 
@@ -104,6 +117,8 @@
     // Refetch our preferences, they may have changed while we were in the background.
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
 	self.vibrationOnWaveEnabled = [defaults boolForKey:@"vibration_preference"];    
+
+    // Start running again
     [self.waveModel resume];
 }
 
@@ -126,6 +141,12 @@
 
 #pragma mark - Controller lifecycle
 
+- (void)awakeFromNib {
+    if(!self.legacyTorchController && [MEXLegacyTorchController isLegacySystem]) {
+        self.legacyTorchController = [[[MEXLegacyTorchController alloc] init] autorelease];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -139,6 +160,7 @@
     [waveModel release];
     [waveView release];
     [crowdTypeSelectionControl release];
+    [legacyTorchController release];
     [super dealloc];
 }
 
