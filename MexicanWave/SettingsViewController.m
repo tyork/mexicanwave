@@ -18,6 +18,7 @@
 #define kNSLocaleKeyUK @"GB"
 #define kNSLocaleKeyES @"ES"
 #define kNSLocaleKeyUS @"US"
+#define kSwitchWidthOffset 20.0f
 
 @interface SettingsViewController ()
 -(NSString*)appstoreURLForCurrentLocale;
@@ -52,16 +53,14 @@
 
 - (void)viewDidLoad
 {
-    
-    UIBarButtonItem* cancel = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didTapCancel)];
-    self.navigationItem.leftBarButtonItem = cancel;
-    [cancel release];
-    
+        
+    //tap gesture to make it eaiser to go back to home screen
     UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapCancel)];
     tap.delegate = self;
     [self.view addGestureRecognizer:tap];
     [tap release];
     
+    //if we are in a geography we have an app present it
     if([[self appstoreURLForCurrentLocale] length]){
         btnYellAppLink.hidden = NO;
         [btnYellAppLink setTitle:NSLocalizedString(@"Yell and Find",@"Yell tag line button Link to appstore") forState:UIControlStateNormal];
@@ -109,27 +108,30 @@
         //add a switch that enables the user to change the settings
         UISwitch* switchControl = [[[UISwitch alloc]init]autorelease];
         switchControl.tag = 99;
-        switchControl.center = CGPointMake(320 - switchControl.frame.size.width*0.5 -20 , cell.frame.size.height*0.5f);
+        switchControl.center = CGPointMake(320 - switchControl.frame.size.width*0.5 -kSwitchWidthOffset , cell.frame.size.height*0.5f);
+        [switchControl addTarget:self action:@selector(didChangeTableSwitch:) forControlEvents:UIControlEventValueChanged];
         [cell addSubview:switchControl];
     }
 
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-	    
+    
+    //get the switch for row and update the  labels and switch from userdefaults
     UISwitch* currentSwitch = (UISwitch*)[cell viewWithTag:99];
     currentSwitch.tag = indexPath.row;
     currentSwitch.on = (indexPath.row == kSettingsVibrationTag) ? [defaults boolForKey:kUserDefaultKeyVibration] : [defaults boolForKey:kUserDefaultKeySound];
-    [currentSwitch addTarget:self action:@selector(didChangeTableSwitch:) forControlEvents:UIControlEventValueChanged];
     cell.textLabel.text = (indexPath.row == kSettingsVibrationTag) ? kSettingsKeyVibration : kSettingsKeySounds;
     return cell;
 }
 
 -(void)didChangeTableSwitch:(UISwitch*)currentSwitch{
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-
+    
+    //update the correct nsuserdefault
     if(currentSwitch.tag == kSettingsSoundsTag){
         [defaults setBool:currentSwitch.isOn forKey:kUserDefaultKeySound];
     }
-    else{
+    //if its not sound lets double check its vibration
+    else if(currentSwitch.tag == kSettingsVibrationTag){
         [defaults setBool:currentSwitch.isOn forKey:kUserDefaultKeyVibration];
     }
     
@@ -145,22 +147,13 @@
     return YES;
 }
 - (IBAction)didTapYellLink:(id)sender {
-    NSLocale* currentLocale = [NSLocale currentLocale];  // get the current locale.
-    NSString* countryCode = [currentLocale objectForKey:NSLocaleCountryCode];
-    
-    if([countryCode isEqualToString:kNSLocaleKeyUK]){
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/gb/app/yell-search-find-local-uk/id329334877?mt=8"]];
-    }
-    else if([countryCode isEqualToString:kNSLocaleKeyUS]){
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/us/app/us-yellow-pages/id306599340?mt=8"]];
-    }
-    else if([countryCode isEqualToString:kNSLocaleKeyES]){
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/es/app/paginas-amarillas-de-peru/id341220443?mt=8"]];
-    }
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self appstoreURLForCurrentLocale]]];
 }
 -(NSString*)appstoreURLForCurrentLocale{
     NSLocale* currentLocale = [NSLocale currentLocale];  // get the current locale.
-    NSString* countryCode = [currentLocale objectForKey:NSLocaleCountryCode];
+    NSString* countryCode = [currentLocale objectForKey:NSLocaleCountryCode]; //get current locale as code.
+
+    //compare codes to get correct url for app store.
     if([countryCode isEqualToString:kNSLocaleKeyUK]){
        return @"http://itunes.apple.com/gb/app/yell-search-find-local-uk/id329334877?mt=8";
     }
@@ -171,7 +164,7 @@
         return @"http://itunes.apple.com/es/app/paginas-amarillas-de-peru/id341220443?mt=8";
     }
     
-    return @"";
+    return nil;
 }
 
 @end

@@ -13,7 +13,6 @@
 		1903F3D01510F50C00807542 /* MEXLampView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1903F3CF1510F50B00807542 /* MEXLampView.m */; };
 		1903F3D8151236BB00807542 /* MEXCrowdTypeSelectionControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1903F3D7151236B900807542 /* MEXCrowdTypeSelectionControl.m */; };
 		1967B90F1523044B00A924D5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1967B90E1523044B00A924D5 /* AudioToolbox.framework */; };
-		1967B91A1523050700A924D5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1967B9191523050700A924D5 /* Settings.bundle */; };
 		1967B91E152311C100A924D5 /* MEXLegacyTorchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1967B91D152311C100A924D5 /* MEXLegacyTorchController.m */; };
 		1967B923152320B700A924D5 /* clapping.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1967B921152320B700A924D5 /* clapping.caf */; };
 		196B8E121517B58700DAD14A /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 196B8DF61517B58700DAD14A /* background.png */; };
@@ -72,7 +71,6 @@
 		1903F3D6151236B800807542 /* MEXCrowdTypeSelectionControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXCrowdTypeSelectionControl.h; sourceTree = "<group>"; };
 		1903F3D7151236B900807542 /* MEXCrowdTypeSelectionControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXCrowdTypeSelectionControl.m; sourceTree = "<group>"; };
 		1967B90E1523044B00A924D5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		1967B9191523050700A924D5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = MexicanWave/Settings.bundle; sourceTree = "<group>"; };
 		1967B91C152311C100A924D5 /* MEXLegacyTorchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXLegacyTorchController.h; sourceTree = "<group>"; };
 		1967B91D152311C100A924D5 /* MEXLegacyTorchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXLegacyTorchController.m; sourceTree = "<group>"; };
 		1967B921152320B700A924D5 /* clapping.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = clapping.caf; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 		1967B918152304E800A924D5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1967B9191523050700A924D5 /* Settings.bundle */,
 				196B8E441518A00100DAD14A /* en.lproj */,
 				196B8DF51517B58700DAD14A /* Images */,
 				1967B91F152320B700A924D5 /* Sounds */,
@@ -407,7 +404,6 @@
 				196B8E4B1518A00100DAD14A /* InfoPlist.strings in Resources */,
 				196B8E4C1518A00100DAD14A /* MainWindow.xib in Resources */,
 				196B8E4D1518A00100DAD14A /* MEXWavingViewController.xib in Resources */,
-				1967B91A1523050700A924D5 /* Settings.bundle in Resources */,
 				1967B923152320B700A924D5 /* clapping.caf in Resources */,
 				00813F0E152DE75C00262289 /* SettingsViewController.xib in Resources */,
 			);
