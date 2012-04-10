@@ -57,7 +57,7 @@
     MEXSegmentButtonControl* leftButton = [[[MEXSegmentButtonControl alloc] initWithFrame:CGRectZero] autorelease];
     leftButton.backgroundImageView.image = [[UIImage imageNamed:@"button-l"] stretchableImageWithLeftCapWidth:39 topCapHeight:0];
     leftButton.imageView.image = [UIImage imageNamed:@"icon-group"];
-    leftButton.titleView.text = @"Fun";
+    leftButton.titleView.text = NSLocalizedString(@"Fun",@"MEXSegement button title for Fun");
     leftButton.contentInsets = UIEdgeInsetsMake(0, 20.0f, 0, 5.0f);
     [leftButton addTarget:self action:@selector(didTapSegment:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:leftButton];
@@ -68,7 +68,7 @@
     MEXSegmentButtonControl* middleButton = [[[MEXSegmentButtonControl alloc] initWithFrame:CGRectZero] autorelease];
     middleButton.backgroundImageView.image = [UIImage imageNamed:@"button-m"];
     middleButton.imageView.image = [UIImage imageNamed:@"icon-music"];
-    middleButton.titleView.text = @"Gig";
+    middleButton.titleView.text = NSLocalizedString(@"Gig",@"MEXSegement button title for Gig");
     middleButton.contentInsets = UIEdgeInsetsMake(0, 10.0f, 0, 10.0f);
     [middleButton addTarget:self action:@selector(didTapSegment:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:middleButton];
@@ -79,7 +79,7 @@
     MEXSegmentButtonControl* rightButton = [[[MEXSegmentButtonControl alloc] initWithFrame:CGRectZero] autorelease];
     rightButton.backgroundImageView.image = [[UIImage imageNamed:@"button-r"] stretchableImageWithLeftCapWidth:1 topCapHeight:0];
     rightButton.imageView.image = [UIImage imageNamed:@"icon-stadium"];
-    rightButton.titleView.text = @"Stadium";
+    rightButton.titleView.text =NSLocalizedString(@"Stadium",@"MEXSegement button title for Stadium");
     rightButton.contentInsets = UIEdgeInsetsMake(0, 5.0f, 0, 20.0f);
     [rightButton addTarget:self action:@selector(didTapSegment:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:rightButton];

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00813F0D152DE75C00262289 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00813F0B152DE75C00262289 /* SettingsViewController.m */; };
+		00813F0E152DE75C00262289 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00813F0C152DE75C00262289 /* SettingsViewController.xib */; };
 		1903F3CD1510F23A00807542 /* MEXWaveFxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1903F3CC1510F23A00807542 /* MEXWaveFxView.m */; };
 		1903F3D01510F50C00807542 /* MEXLampView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1903F3CF1510F50B00807542 /* MEXLampView.m */; };
 		1903F3D8151236BB00807542 /* MEXCrowdTypeSelectionControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1903F3D7151236B900807542 /* MEXCrowdTypeSelectionControl.m */; };
@@ -60,6 +62,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00813F0A152DE75C00262289 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		00813F0B152DE75C00262289 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		00813F0C152DE75C00262289 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ../SettingsViewController.xib; sourceTree = "<group>"; };
 		1903F3CB1510F23900807542 /* MEXWaveFxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXWaveFxView.h; sourceTree = "<group>"; };
 		1903F3CC1510F23A00807542 /* MEXWaveFxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEXWaveFxView.m; sourceTree = "<group>"; };
 		1903F3CE1510F50A00807542 /* MEXLampView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEXLampView.h; sourceTree = "<group>"; };
@@ -143,6 +148,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00813F08152DE72A00262289 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				00813F0A152DE75C00262289 /* SettingsViewController.h */,
+				00813F0B152DE75C00262289 /* SettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		1903F3E11517717800807542 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +242,7 @@
 				196B8E451518A00100DAD14A /* InfoPlist.strings */,
 				196B8E471518A00100DAD14A /* MainWindow.xib */,
 				196B8E491518A00100DAD14A /* MEXWavingViewController.xib */,
+				00813F0C152DE75C00262289 /* SettingsViewController.xib */,
 			);
 			name = en.lproj;
 			path = MexicanWave/en.lproj;
@@ -269,6 +284,7 @@
 		199CB60A14FEA3CA00A16A97 /* MexicanWave */ = {
 			isa = PBXGroup;
 			children = (
+				00813F08152DE72A00262289 /* Settings */,
 				199CB61314FEA3CA00A16A97 /* MEXAppDelegate.h */,
 				199CB61414FEA3CA00A16A97 /* MEXAppDelegate.m */,
 				199CB63814FF851C00A16A97 /* Waving */,
@@ -393,6 +409,7 @@
 				196B8E4D1518A00100DAD14A /* MEXWavingViewController.xib in Resources */,
 				1967B91A1523050700A924D5 /* Settings.bundle in Resources */,
 				1967B923152320B700A924D5 /* clapping.caf in Resources */,
+				00813F0E152DE75C00262289 /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +430,7 @@
 				1903F3D8151236BB00807542 /* MEXCrowdTypeSelectionControl.m in Sources */,
 				196B8E331518937400DAD14A /* MEXSegmentButtonControl.m in Sources */,
 				1967B91E152311C100A924D5 /* MEXLegacyTorchController.m in Sources */,
+				00813F0D152DE75C00262289 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
