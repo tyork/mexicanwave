@@ -22,7 +22,7 @@
 @property (nonatomic,retain) IBOutlet MEXCrowdTypeSelectionControl* crowdTypeSelectionControl;
 
 - (IBAction)didChangeCrowdType:(id)sender;
-
+- (IBAction)didTapSettingButton:(id)sender;
 - (void)pause;
 - (void)resume;
 

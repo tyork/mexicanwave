@@ -11,7 +11,7 @@
 #import "MEXWaveFxView.h"
 #import "MEXCrowdTypeSelectionControl.h"
 #import "MEXLegacyTorchController.h"            // TODO: Remove this once support for iOS 4.x is not a concern.
-
+#import "SettingsViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 
@@ -66,6 +66,16 @@
         default:
             break;
     }
+}
+
+- (IBAction)didTapSettingButton:(id)sender {
+
+    SettingsViewController* settings = [[SettingsViewController alloc]init];
+    settings.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+    [self presentModalViewController:settings animated:YES];
+    [settings release];
+    [self pause];
+   
 }
 
 #pragma mark - Torch handling
@@ -202,8 +212,13 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self torchOff];
+    [self pause];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self resume];
+}
 #pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
